@@ -2,6 +2,8 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
+/Backend/bin
+/Backend/.vs
 /Backend/bin/Debug/net7.0/appsettings.Development.json
 /Backend/bin/Debug/net7.0/appsettings.json
 /Backend/.vs/Backend/v17
