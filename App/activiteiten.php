@@ -1,3 +1,6 @@
+<?php
+    include "header.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +11,6 @@
     <link rel="stylesheet" href="css/activiteiten.css">
 </head>
 <body>
-    <?php
-    include "header.php";
-    ?>
     <div class="Product-main">
     <div class="ProductCard">
                 <a class="card">
