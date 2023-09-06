@@ -49,3 +49,6 @@ if (isset($_POST['inloggen']))  {
 
 </html>
 
+<?php
+include "footer.php";
+?>
