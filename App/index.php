@@ -18,11 +18,10 @@ if (isset($_POST['inloggen']))  {
         $_SESSION['covadiaan'] = $covidaan;
         $_SESSION['covadiaan_id'] = $covidaan['id'];
         header("Location: activiteiten.php");
-    } else {
-        echo "Gebruiker niet gevonden";
-    }
+    } 
 }
 ?>
+
 <head>
     <link rel="stylesheet" href="css/index.css">
 </head>
