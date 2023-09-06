@@ -27,7 +27,7 @@ if (isset($_POST['inloggen']))  {
 
 <body>
     <div>
-        <form i method="POST" action="#">
+        <form method="POST" action="#">
             <h2>Login</h2>
             <label for="email">Email:</label>
             <input type="email" name="email" id="email" required>
