@@ -1,0 +1,64 @@
+   .Product-main {
+    width: 100%;
+    height: auto;
+    margin-bottom: 25px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  } 
+   .Product-main .filters select {
+    padding: 6px;
+    border: none;
+    background: #AAA;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+  } 
+  .Product-main .ProductTxt {
+    font-size: 35px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+   /* .Product-main .ProductCard {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }   */
+  .Product-main .ProductCard .card {
+    width: 350px;
+    height: 400px;
+    background-color: white;
+    position: relative;
+    box-shadow: 0 0 6px -3px #111;
+    transition: all 0.3s;
+    text-decoration: none;
+    border-radius: 8px;
+    color: black;
+    padding: 10px;
+  }
+  .Product-main .ProductCard .card .ImageProduct {
+    width: 100%;
+    height: 250px;
+  }
+  .Product-main .ProductCard .card .ImgCard {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .Product-main .ProductCard .card .TxtColor {
+    display: flex;
+  }
+  .Product-main .ProductCard .card .TxtCard {
+    width: 100%;
+    height: auto;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .Product-main .ProductCard .card .TxtCard .PrijsPproduct {
+    font-size: 15px;
+    text-decoration: line-through;
+    color: #ddd;
+  }
