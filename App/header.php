@@ -10,6 +10,9 @@
         <a href="index.php">
             <img class="headerLogo" src="img/logo_covadis_2016.png"></img>
         </a>
+        <?php
+        if (!isset($_SESSION['covadiaan'])) { ?>
         <a class="logInLink" href="inloggen.php">Inloggen</a>
+        <?php } ?>
     </header>
 </body>
