@@ -14,7 +14,6 @@ if (isset($_POST['inloggen']))  {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
