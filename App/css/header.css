@@ -1,0 +1,19 @@
+header {
+    height: 100px;
+    width: 100%;
+    padding: 5px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerLogo {
+    height: 100%;
+}
+
+.logInLink {
+    text-decoration: none;
+    font-size: 20px;
+    color: #0f132f;
+    font-weight: 700;
+}
