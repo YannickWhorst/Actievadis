@@ -1,5 +1,6 @@
 <?php
 include "header.php";
+?>
 
 if (isset($_SESSION['covadiaan'])) {
     header("Location: activiteiten.php");
@@ -38,3 +39,6 @@ if (isset($_POST['inloggen']))  {
 
 </html>
 
+<?php
+include "footer.php";
+?>
