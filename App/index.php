@@ -1,6 +1,7 @@
 <?php
 include "header.php";
-?>
+include "./config/database_functions.php";
+include "./config/database_config.php";
 
 if (isset($_SESSION['covadiaan'])) {
     header("Location: activiteiten.php");
@@ -8,9 +9,18 @@ if (isset($_SESSION['covadiaan'])) {
 }
 
 if (isset($_POST['inloggen']))  {
-    $email = $_POST['covadiaan_email'];
-    $password = $_POST['covadiaan_wachtwoord'];
-    $result = db_getData("SELECT * FROM covadiaan WHERE email = '$email' AND password = '$password'"); 
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $result = db_getData("SELECT * FROM covadiaan WHERE covadiaan_email = '$email' AND covadiaan_wachtwoord = '$password'"); 
+
+    $covidaan = $result->fetch(PDO::FETCH_ASSOC);
+    if ($covidaan) {
+        $_SESSION['covadiaan'] = $covidaan;
+        $_SESSION['covadiaan_id'] = $covidaan['id'];
+        header("Location: activiteiten.php");
+    } else {
+        echo "Gebruiker niet gevonden";
+    }
 }
 ?>
 
@@ -26,7 +36,7 @@ if (isset($_POST['inloggen']))  {
 
 <body>
     <div>
-        <form method="POST" action="#">
+        <form method="POST" action="">
             <h2>Login</h2>
             <label for="email">Email:</label>
             <input type="email" name="email" id="email" required>
