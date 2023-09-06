@@ -1,7 +1,6 @@
 <?php
 include "header.php";
 
-
 if (isset($_SESSION['covadiaan'])) {
     header("Location: activiteiten.php");
     exit();
