@@ -1,5 +1,7 @@
 <?php
     include "header.php";
+    include "./config/database_functions.php";
+    include "./config/database_config.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,80 +13,32 @@
     <link rel="stylesheet" href="css/activiteiten.css">
 </head>
 <body>
-    <div class="Product-main">
-        <div class="ProductCard">
+
+
+<?php
+    $sql = "SELECT activiteit_afbeelding, activiteit_naam, activiteit_omschrijving FROM activiteit";
+    $stmt = db_getData($sql);
+?>
+
+<div class="Product-main">    
+    <?php
+        // De resultaten weergeven in de HTML
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        echo '<div class="ProductCard">
                 <a class="card">
                     <div class="ImageProduct">
-                        <img src="images/teamuitje.jpg" class="ImgCard"/>
+                        <img src="img/uploads/' . $row["activiteit_afbeelding"] . '" class="ImgCard"/>
                     </div>
                     <div class="TxtCard">
-                        Solex rijden
+                        ' . $row["activiteit_naam"] . '
                     </div>
                     <div class="TxtCard">
-                            Kom mee solex rijden in het prachtige veluwe
+                        ' . $row["activiteit_omschrijving"] . '
                     </div>
                 </a>
-            </div>
-            <div class="ProductCard">
-                <a class="card">
-                    <div class="ImageProduct">
-                        <img src="images/Wipeout.jpg" class="ImgCard"/>
-                    </div>
-                    <div class="TxtCard">
-                        Wipeout
-                    </div>
-                    <div class="TxtColor">
-                        <div class="TxtCard">
-                            Kom mee naar wipeout, voor een leuke en gezellige middag
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="ProductCard">
-                <a class="card">
-                    <div class="ImageProduct">
-                        <img src="images/Wipeout.jpg" class="ImgCard"/>
-                    </div>
-                    <div class="TxtCard">
-                        Wipeout
-                    </div>
-                    <div class="TxtColor">
-                        <div class="TxtCard">
-                            Kom mee naar wipeout, voor een leuke en gezellige middag
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="ProductCard">
-                <a class="card">
-                    <div class="ImageProduct">
-                        <img src="images/Wipeout.jpg" class="ImgCard"/>
-                    </div>
-                    <div class="TxtCard">
-                        Wipeout
-                    </div>
-                    <div class="TxtColor">
-                        <div class="TxtCard">
-                            Kom mee naar wipeout, voor een leuke en gezellige middag
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="ProductCard">
-                <a class="card">
-                    <div class="ImageProduct">
-                        <img src="images/Wipeout.jpg" class="ImgCard"/>
-                    </div>
-                    <div class="TxtCard">
-                        Wipeout
-                    </div>
-                    <div class="TxtColor">
-                        <div class="TxtCard">
-                            Kom mee naar wipeout, voor een leuke en gezellige middag
-                        </div>
-                    </div>
-                </a>
-            </div>
-    </div>
-</body>
-</html>
+            </div>';
+    }
+    ?>
+</div>
+
+
