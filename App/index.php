@@ -1,7 +1,8 @@
 <?php
+
+session_start();
+
 include "header.php";
-include "./config/database_functions.php";
-include "./config/database_config.php";
 
 if (isset($_SESSION['covadiaan'])) {
     header("Location: activiteiten.php");

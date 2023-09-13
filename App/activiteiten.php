@@ -1,7 +1,6 @@
 <?php
+    session_start();
     include "header.php";
-    include "./config/database_functions.php";
-    include "./config/database_config.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
