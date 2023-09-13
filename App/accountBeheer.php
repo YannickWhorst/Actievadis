@@ -4,7 +4,7 @@ include "./config/database_functions.php";
 include "./config/database_config.php";
 ?>
 <head>
-    <link href="css/admin.css" rel="stylesheet" type="text/css">
+    <link href="css/accountBeheer.css" rel="stylesheet" type="text/css">
 </head>
 
 <?php
