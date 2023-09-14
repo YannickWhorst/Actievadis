@@ -35,6 +35,11 @@
                     <div class="TxtCard">
                         <?php echo $row["activiteit_omschrijving"] ?>
                     </div>
+                    <form action="activiteitenExtraInfo.php" method="post" >
+                        <input type="hidden" name="id" value="<?php echo $row["id"] ?>" >
+                      <input type="submit" value="Lees meer"  >
+                    </form>
+                    
                 </a>
         </div>
    <?php }

@@ -14,9 +14,10 @@ include "./config/database_config.php";
 </head>
 <body>
 <?php
-    $sql = "SELECT * FROM activiteit";
+    $id = $_POST["id"];
+    $sql = "SELECT * FROM activiteit WHERE id = $id";
     $stmt = db_getData($sql);
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
    <div class="page">
     <img src="img/uploads/<?php echo $row["activiteit_afbeelding"] ?>" class="img"/>
@@ -39,7 +40,7 @@ include "./config/database_config.php";
         <div class="tekst">Begin tijd: <?php echo $row["activiteit_begin_tijd"] ?></div>
         <div class="tekst">Eind tijd: <?php echo $row["activiteit_eindtijd"] ?></div>
     </div>
-    </div><?php }?>
+    </div>
 </body>
 </html>
 <?php
