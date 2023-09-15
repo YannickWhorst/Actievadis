@@ -1,5 +1,7 @@
 <?php
     include "header.php";
+    include "./config/database_functions.php";
+    include "./config/database_config.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,82 +13,39 @@
     <link rel="stylesheet" href="css/activiteiten.css">
 </head>
 <body>
-    <div class="Product-main">
-        <div class="ProductCard">
-                <a class="card">
-                    <div class="ImageProduct">
-                        <img src="images/teamuitje.jpg" class="ImgCard"/>
-                    </div>
-                    <div class="TxtCard">
-                        Solex rijden
-                    </div>
-                    <div class="TxtCard">
-                            Kom mee solex rijden in het prachtige veluwe
-                    </div>
-                </a>
-            </div>
-            <div class="ProductCard">
-                <a class="card">
-                    <div class="ImageProduct">
-                        <img src="images/Wipeout.jpg" class="ImgCard"/>
-                    </div>
-                    <div class="TxtCard">
-                        Wipeout
-                    </div>
-                    <div class="TxtColor">
-                        <div class="TxtCard">
-                            Kom mee naar wipeout, voor een leuke en gezellige middag
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="ProductCard">
-                <a class="card">
-                    <div class="ImageProduct">
-                        <img src="images/Wipeout.jpg" class="ImgCard"/>
-                    </div>
-                    <div class="TxtCard">
-                        Wipeout
-                    </div>
-                    <div class="TxtColor">
-                        <div class="TxtCard">
-                            Kom mee naar wipeout, voor een leuke en gezellige middag
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="ProductCard">
-                <a class="card">
-                    <div class="ImageProduct">
-                        <img src="images/Wipeout.jpg" class="ImgCard"/>
-                    </div>
-                    <div class="TxtCard">
-                        Wipeout
-                    </div>
-                    <div class="TxtColor">
-                        <div class="TxtCard">
-                            Kom mee naar wipeout, voor een leuke en gezellige middag
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="ProductCard">
-                <a class="card">
-                    <div class="ImageProduct">
-                        <img src="images/Wipeout.jpg" class="ImgCard"/>
-                    </div>
-                    <div class="TxtCard">
-                        Wipeout
-                    </div>
-                    <div class="TxtColor">
-                        <div class="TxtCard">
-                            Kom mee naar wipeout, voor een leuke en gezellige middag
-                        </div>
-                    </div>
-                </a>
-            </div>
-    </div>
+
+
+<?php
+    $sql = "SELECT id, activiteit_afbeelding, activiteit_naam, activiteit_omschrijving FROM activiteit";
+    $stmt = db_getData($sql);
+?>
+
+<div class="Product-main">    
     <?php
+        // De resultaten weergeven in de HTML
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+        <div class="ProductCard">
+                <a class="card">  
+                <div class="ImageProduct">
+                        <img src="img/uploads/<?php echo $row["activiteit_afbeelding"] ?>" class="ImgCard"/>
+                    </div>
+                    <div class="TxtCard">
+                        <?php echo $row["activiteit_naam"] ?>
+                    </div>
+                    <div class="TxtCard">
+                        <?php echo $row["activiteit_omschrijving"] ?>
+                    </div>
+                    <form action="activiteitenExtraInfo.php" method="post" >
+                        <input type="hidden" name="id" value="<?php echo $row["id"] ?>" >
+                      <input type="submit" value="Lees meer"  >
+                    </form>
+                    
+                </a>
+        </div>
+   <?php }
+    ?>
+</div>
+<?php
     include "footer.php";
 ?>
 </body>

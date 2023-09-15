@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 06, 2023 at 01:31 PM
+-- Generation Time: Sep 06, 2023 at 02:46 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -52,7 +52,8 @@ CREATE TABLE `covadiaan` (
   `id` int(11) NOT NULL,
   `covadiaan_naam` varchar(255) NOT NULL,
   `covadiaan_email` varchar(255) NOT NULL,
-  `covadiaan_wachtwoord` varchar(255) NOT NULL
+  `covadiaan_wachtwoord` varchar(255) NOT NULL,
+  `covadiaan_rol_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

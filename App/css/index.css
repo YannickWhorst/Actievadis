@@ -1,0 +1,10 @@
+.inlog-btn {
+    background-color: #0f132f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.inlog-btn:hover {
+    background-color: #0f132fe1;
+}
