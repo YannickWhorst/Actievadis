@@ -1,5 +1,4 @@
 <?php
-    session_start();
     include "header.php";
 ?>
 <!DOCTYPE html>
@@ -12,7 +11,6 @@
     <link rel="stylesheet" href="css/activiteiten.css">
 </head>
 <body>
-
 
 <?php
     $sql = "SELECT id, activiteit_afbeelding, activiteit_naam, activiteit_omschrijving FROM activiteit";
@@ -36,7 +34,7 @@
                     </div>
                     <form action="activiteitenExtraInfo.php" method="post" >
                         <input type="hidden" name="id" value="<?php echo $row["id"] ?>" >
-                      <input type="submit" value="Lees meer"  >
+                        <input type="submit" value="Lees meer">
                     </form>
                     
                 </a>

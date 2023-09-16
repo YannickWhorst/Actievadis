@@ -40,9 +40,9 @@
         <div class="tekst">Eind tijd: <?php echo $row["activiteit_eindtijd"] ?></div>
     </div>  
     <form action="inschrijven.php" method="post">
-            <input type="hidden" name="activiteit_id" value="<?php echo $id ?>" >
-            <input type="submit" value="inschrijven">
-        </form>
+        <input type="hidden" name="activiteit_id" value="<?php echo $id ?>" >
+        <input type="submit" value="inschrijven">
+    </form>
 </body>
 </html>
 

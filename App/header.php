@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    
     include "./config/database_functions.php";
     include "./config/database_config.php";
 ?>
@@ -17,7 +19,7 @@
         </a>
         <?php
         if (!isset($_SESSION['covadiaan'])) { ?>
-        <a class="logInLink" href="index.php">Inloggen</a>
+            <a class="logInLink" href="index.php">Inloggen</a>
         <?php } ?>
     </header>
 </body>

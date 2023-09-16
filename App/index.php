@@ -1,26 +1,23 @@
 <?php
+    include "header.php";
 
-session_start();
-
-include "header.php";
-
-if (isset($_SESSION['covadiaan'])) {
-    header("Location: activiteiten.php");
-    exit();
-}
-
-if (isset($_POST['inloggen']))  {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $result = db_getData("SELECT * FROM covadiaan WHERE covadiaan_email = '$email' AND covadiaan_wachtwoord = '$password'"); 
-
-    $covidaan = $result->fetch(PDO::FETCH_ASSOC);
-    if ($covidaan) {
-        $_SESSION['covadiaan'] = $covidaan;
-        $_SESSION['covadiaan_id'] = $covidaan['id'];
+    if (isset($_SESSION['covadiaan'])) {
         header("Location: activiteiten.php");
-    } 
-}
+        exit();
+    }
+
+    if (isset($_POST['inloggen']))  {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $result = db_getData("SELECT * FROM covadiaan WHERE covadiaan_email = '$email' AND covadiaan_wachtwoord = '$password'"); 
+
+        $covidaan = $result->fetch(PDO::FETCH_ASSOC);
+        if ($covidaan) {
+            $_SESSION['covadiaan'] = $covidaan;
+            $_SESSION['covadiaan_id'] = $covidaan['id'];
+            header("Location: activiteiten.php");
+        } 
+    }
 ?>
 
 <head>
@@ -44,5 +41,5 @@ if (isset($_POST['inloggen']))  {
 </div>
 
 <?php
-include "footer.php";
+    include "footer.php";
 ?>
