@@ -6,6 +6,7 @@
 </head>
 
 <?php
+
 if (isset($_POST['registreer']))  
 {
  
@@ -59,14 +60,21 @@ $accounts = db_getData($sql)
             <?php
               while ($row = $accounts->fetch(PDO::FETCH_ASSOC)) { ?>
               <tr class="align-middle">
-             
+                
                 <td><?php echo $row['covadiaan_naam']; ?></td>
                 <td><?php echo $row['covadiaan_email']; ?></td>
                 <td><?php echo $row['covadiaan_wachtwoord']; ?></td>
                 <td><?php echo $row['covadiaan_rol_id']; ?></td>
                 <td class="d-flex gap-3">
-                    <button type="button" class="btn btn-warning">Bewerk</button>
-                    <button type="button" class="btn btn-danger">Verwijder</button>
+
+                <form method="post" action="accountBewerk.php"> 
+                  <input type="hidden" id="id" name="id" value="<?php echo $row['id'] ?>">    
+                  <button type="submit" name="bewerk" class="btn btn-warning">Bewerk</button>
+                </form>
+                <form method="post" action=""> 
+                  <input type="hidden" id="id" name="id" value="<?php echo $row['id'] ?>">    
+                  <button type="submit" name="verwijder" class="btn btn-danger">Verwijder</button>
+                </form>
                 </td>
                 
               </tr>
@@ -78,6 +86,21 @@ $accounts = db_getData($sql)
     </div>
 </body>
 
+<?php
+
+
+if (isset($_POST['verwijder'])) {
+  $id = $_POST['id'];
+  if (db_deleteData($id)) {
+      // Als de verwijdering succesvol is, toon dan een JavaScript pop-upmelding en vernieuw de pagina
+      echo '<script>alert("Account is succesvol verwijderd."); window.location.href = window.location.href;</script>';
+  } else {
+      // Als er een fout optreedt, toon dan een JavaScript pop-upmelding met de foutmelding en vernieuw de pagina
+      echo '<script>alert("Fout bij het verwijderen van het account: ' . $conn->error . '"); window.location.href = window.location.href;</script>';
+  }
+}
+
+?>
 <?php
 include "footer.php";
 ?>
