@@ -1,7 +1,5 @@
 <?php
     include "header.php";
-    include "./config/database_functions.php";
-    include "./config/database_config.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,29 +13,37 @@
 <body>
 
 <?php
-    $sql = "SELECT activiteit_afbeelding, activiteit_naam, activiteit_omschrijving FROM activiteit";
+    $sql = "SELECT id, activiteit_afbeelding, activiteit_naam, activiteit_omschrijving FROM activiteit";
     $stmt = db_getData($sql);
 ?>
 
 <div class="Product-main">    
     <?php
         // De resultaten weergeven in de HTML
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        echo '<div class="ProductCard">
-                <a class="card">
-                    <div class="ImageProduct">
-                        <img src="img/uploads/' . $row["activiteit_afbeelding"] . '" class="ImgCard"/>
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+        <div class="ProductCard">
+                <a class="card">  
+                <div class="ImageProduct">
+                        <img src="img/uploads/<?php echo $row["activiteit_afbeelding"] ?>" class="ImgCard"/>
                     </div>
                     <div class="TxtCard">
-                        ' . $row["activiteit_naam"] . '
+                        <?php echo $row["activiteit_naam"] ?>
                     </div>
                     <div class="TxtCard">
-                        ' . $row["activiteit_omschrijving"] . '
+                        <?php echo $row["activiteit_omschrijving"] ?>
                     </div>
+                    <form action="activiteitenExtraInfo.php" method="post" >
+                        <input type="hidden" name="id" value="<?php echo $row["id"] ?>" >
+                        <input type="submit" value="Lees meer">
+                    </form>
+                    
                 </a>
-            </div>';
-    }
+        </div>
+   <?php }
     ?>
 </div>
-
-
+<?php
+    include "footer.php";
+?>
+</body>
+</html>
