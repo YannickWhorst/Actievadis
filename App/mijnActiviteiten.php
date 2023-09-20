@@ -24,7 +24,7 @@ include "./config/database_config.php";
         <div class="card-text">
             <p class="body rounded border p-2"><?php echo $activiteit["activiteit_omschrijving"]; ?></p>
             <h5>Locatie: <?php echo $activiteit["activiteit_locatie"]; ?></h5>
-            <h5>Opmerking: <?php echo $row["opmerking"]; ?></h5>
+            <h5>Opmerking: <?php echo $row["inschrijving_opmerking"]; ?></h5>
             <small class="text-muted">Begint op: <?php echo $activiteit["activiteit_begin_tijd"]; ?></small><br>
             <small class="text-muted">Eindigt op: <?php echo $activiteit["activiteit_eindtijd"]; ?></small>
         </div>
