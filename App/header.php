@@ -18,11 +18,16 @@
         </a>
         <?php
         if (!isset($_SESSION['covadiaan'])) { ?>
-        <a class="logInLink" href="index.php">Inloggen</a>
+        <a class="headerLink" href="index.php">Inloggen</a>
         <?php } ?>
         <?php
-        if (isset($_SESSION['covadiaan'])) { ?>
-        <a class="logInLink" href="mijnActiviteiten.php">Mijn activiteiten</a>
-        <?php } ?>
+        if (isset($_SESSION['covadiaan'])) {
+        if ($_SESSION['rol_id'] == "2") { ?>
+        <a class="headerLink" href="accountBeheer.php">Account beheer</a>
+        <a class="headerLink" href="activiteitenBeheer.php">Activiteiten beheer</a>
+        
+        <?php } else { ?>
+        <a class="headerLink" href="mijnActiviteiten.php">Mijn activiteiten</a>
+        <?php } } ?>
     </header>
 </body>

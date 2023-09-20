@@ -15,6 +15,7 @@
         if ($covidaan) {
             $_SESSION['covadiaan'] = $covidaan;
             $_SESSION['covadiaan_id'] = $covidaan['id'];
+            $_SESSION['rol_id'] = $covidaan['covadiaan_rol_id'];
             header("Location: activiteiten.php");
         } 
     }
