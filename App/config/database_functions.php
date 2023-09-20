@@ -31,9 +31,10 @@
             $queryPDO = $db->prepare($query);
             $queryPDO->execute();
             $db = null;
-            return $queryPDO;
+            return true;
         } catch(PDOException $e) {
             die("Error: " . $e->getMessage());
+            return false;
         }
     }
 

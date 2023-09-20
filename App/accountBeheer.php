@@ -1,7 +1,5 @@
 <?php
-include "header.php";
-include "./config/database_functions.php";
-include "./config/database_config.php";
+  include "header.php";
 ?>
 <head>
     <link href="css/accountBeheer.css" rel="stylesheet" type="text/css">
