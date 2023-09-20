@@ -3,7 +3,7 @@ include "header.php";
 ?>
 
 <?php
-    $sql = "SELECT activiteit_id, opmerking FROM inschrijving WHERE covadiaan_id = ".$_SESSION['covadiaan_id'];
+    $sql = "SELECT activiteit_id, inschrijving_opmerking FROM inschrijving WHERE covadiaan_id = ".$_SESSION['covadiaan_id'];
     $inschrijvingen = db_getData($sql);
 ?>
 
