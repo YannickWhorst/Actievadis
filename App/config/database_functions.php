@@ -24,6 +24,23 @@
         
     }
 
+    function db_deleteData($id) {
+        try {
+            $db = db_connect();
+            $queryPDO = $db->prepare("DELETE FROM covadiaan WHERE id = :id");
+            $queryPDO->bindParam(':id', $id, PDO::PARAM_INT);
+
+            if($queryPDO->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch(PDOException $e) {
+            die("Error: " . $e-getMessage());
+            return false;
+        }
+    }
+
     // Database informatie in de database stoppen 
     function db_insertData($query) {
         try{
@@ -56,5 +73,27 @@
             return $user;
         } else {
             return "No user found";
+        }
+    }
+
+    function db_updateCovadiaan($id, $email, $name, $password, $rolId) {
+        try {
+            $db = db_connect();
+            $query = "UPDATE `covadiaan` SET `covadiaan_email` = :email, `covadiaan_naam` = :name, `covadiaan_wachtwoord` = :password, `covadiaan_rol_id` = :rolId WHERE `id` = :id";
+            $stmt = $db->prepare($query);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+            $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+            $stmt->bindParam(':rolId', $rolId, PDO::PARAM_INT);
+    
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+            return false;
         }
     }
