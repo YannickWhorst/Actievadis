@@ -1,8 +1,5 @@
 <?php
     include "header.php";
-    include "./config/database_functions.php";
-    include "./config/database_config.php";
-
 ?>
 
 <body>
