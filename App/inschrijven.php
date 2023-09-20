@@ -25,7 +25,7 @@
     if(isset($_POST['inschrijven_activiteit'])) {
         $opmerking = isset($_POST['opmerking']) ? $_POST['opmerking'] : NULL;
 
-        $sql = "INSERT INTO `inschrijving`(`activiteit_id`, `covadiaan_id`, `opmerking`) 
+        $sql = "INSERT INTO `inschrijving`(`activiteit_id`, `covadiaan_id`, `inschrijving_opmerking`) 
                 VALUES ('$activiteit_id','$covadiaan_id','$opmerking')";
         
         if(db_insertData($sql)) {
