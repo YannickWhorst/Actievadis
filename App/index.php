@@ -18,7 +18,7 @@ if (isset($_POST['inloggen']))  {
         $_SESSION['covadiaan'] = $covidaan;
         $_SESSION['covadiaan_id'] = $covidaan['id'];
         header("Location: activiteiten.php");
-    } 
+    }
 }
 ?>
 

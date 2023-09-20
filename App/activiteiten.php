@@ -14,7 +14,6 @@
 </head>
 <body>
 
-
 <?php
     $sql = "SELECT activiteit_afbeelding, activiteit_naam, activiteit_omschrijving FROM activiteit";
     $stmt = db_getData($sql);
