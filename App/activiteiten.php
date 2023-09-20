@@ -34,7 +34,7 @@
                     </div>
                     <form action="activiteitenExtraInfo.php" method="post" >
                         <input type="hidden" name="id" value="<?php echo $row["id"] ?>" >
-                        <input type="submit" value="Lees meer">
+                         <input type="submit" value="Lees meer" class="buttonactiviteit">
                     </form>
                     
                 </a>
