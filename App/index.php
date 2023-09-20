@@ -11,7 +11,6 @@
         $password = $_POST['password'];
         $result = db_getData("SELECT * FROM covadiaan WHERE covadiaan_email = '$email' AND covadiaan_wachtwoord = '$password'"); 
 
-
         $covidaan = $result->fetch(PDO::FETCH_ASSOC);
         if ($covidaan) {
             $_SESSION['covadiaan'] = $covidaan;
