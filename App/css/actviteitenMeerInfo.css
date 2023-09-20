@@ -42,5 +42,12 @@
     background-color: white;
     border-radius: 10px;
     font-size: 16px;
-    color: #27DBA2  ;
+    color: #27DBA2;
+    transition: all 0.3s;
+}
+
+.buttonInschrijven:hover
+{
+    background-color: #27DBA2;
+    color: white;
 }
