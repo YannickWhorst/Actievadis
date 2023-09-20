@@ -38,11 +38,12 @@
         <div class="tekst">Omschrijving: <?php echo $row["activiteit_omschrijving"] ?></div>
         <div class="tekst">Begin tijd: <?php echo $row["activiteit_begin_tijd"] ?></div>
         <div class="tekst">Eind tijd: <?php echo $row["activiteit_eindtijd"] ?></div>
+        <form action="inschrijven.php" method="post" >
+           <input type="hidden" name="activiteit_id" value="<?php echo $id ?>" >
+            <input type="submit" value="inschrijven" class="buttonInschrijven">
+        </form>
     </div>  
-    <form action="inschrijven.php" method="post">
-        <input type="hidden" name="activiteit_id" value="<?php echo $id ?>" >
-        <input type="submit" value="inschrijven">
-    </form>
+
 </body>
 </html>
 

@@ -1,7 +1,7 @@
 .page
 {
     width: 100%;
-    height: 500px;
+    height: 556px;
     box-shadow: 0 0 6px -3px #111;
     background-color: white;
     display: flex;
@@ -29,6 +29,18 @@
 
 .tekst
 {
-    font-size: 20px;
+    font-size: 16px;
     margin: 15px;
+}
+
+.buttonInschrijven
+{
+    margin-left: 15px;
+    width: 175px;
+    height: 40px;
+    border: 2px solid #27DBA2;
+    background-color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #27DBA2  ;
 }

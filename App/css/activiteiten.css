@@ -57,3 +57,14 @@
     text-decoration: line-through;
     color: #ddd;
   }
+  .buttonactiviteit{
+    border: none;
+    background-color: white;
+    text-align: center;
+    width: 100%;
+    margin-top: 15px;
+  }
+  .buttonactiviteit:hover
+  {
+    text-decoration: underline;
+  }
