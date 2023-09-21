@@ -13,7 +13,7 @@
 <body>
 
 <?php
-    $sql = "SELECT id, activiteit_afbeelding, activiteit_naam, activiteit_omschrijving FROM activiteit";
+    $sql = "SELECT id, activiteit_afbeelding, activiteit_naam, activiteit_locatie, activiteit_kosten, activiteit_datum FROM activiteit";
     $stmt = db_getData($sql);
 ?>
 
@@ -22,21 +22,22 @@
         // De resultaten weergeven in de HTML
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
         <div class="ProductCard">
-                <a class="card">  
-                <div class="ImageProduct">
+                <a href="activiteitenExtraInfo.php?id=<?php echo $row['id'];?>" class="card">  
+                    <div class="ImageProduct">
                         <img src="img/uploads/<?php echo $row["activiteit_afbeelding"] ?>" class="ImgCard"/>
                     </div>
-                    <div class="TxtCard">
+                    <div class="TxtTitel">
                         <?php echo $row["activiteit_naam"] ?>
                     </div>
                     <div class="TxtCard">
-                        <?php echo $row["activiteit_omschrijving"] ?>
+                        <?php echo "Datum: &nbsp" . $row["activiteit_datum"] ?>
                     </div>
-                    <form action="activiteitenExtraInfo.php" method="post" >
-                        <input type="hidden" name="id" value="<?php echo $row["id"] ?>" >
-                         <input type="submit" value="Lees meer" class="buttonactiviteit">
-                    </form>
-                    
+                    <div class="TxtCard">
+                        <?php echo "Prijs: &nbsp€" . $row["activiteit_kosten"] ?>
+                    </div>
+                    <div class="TxtCard">
+                        <?php echo "Locatie: &nbsp" . $row["activiteit_locatie"] ?>
+                    </div>                    
                 </a>
         </div>
    <?php }
