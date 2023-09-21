@@ -12,7 +12,7 @@
 </head>
 <body>
 <?php
-    $id = $_POST["id"];
+    $id = $_GET["id"];
     $sql = "SELECT * FROM activiteit WHERE id = $id";
     $stmt = db_getData($sql);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
