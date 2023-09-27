@@ -32,7 +32,7 @@ $activiteiten = db_getData($sql)
                 <td><?php echo $row['activiteit_kosten']; ?></td>
                 <td><?php echo $row['activiteit_benodigdheden']; ?></td>
                 <td><?php echo $row['activiteit_omschrijving']; ?></td>
-                <td><?php echo $row['activiteit_datum'] . ' ' . $row['activiteit_begin_tijd'] . ' tot ' . $row['activiteit_eindtijd']; ?></td>
+                <td><?php echo date("d-m-Y", strtotime($row['activiteit_datum'])) . ' ' . date("H:i", strtotime($row["activiteit_begin_tijd"])) . ' tot ' . date("H:i", strtotime($row["activiteit_begin_tijd"])); ?></td>
                 <td class="d-flex gap-3">
                     
                     <form method="post" action="activiteitenBewerk.php">
