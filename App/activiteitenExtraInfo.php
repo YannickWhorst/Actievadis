@@ -16,6 +16,9 @@
     $sql = "SELECT * FROM activiteit WHERE id = $id";
     $stmt = db_getData($sql);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $covadiaanId = $_SESSION["covadiaan_id"];
+    $isIngeschreven = db_getData("SELECT * FROM inschrijving WHERE 'covadiaan_id' = $covadiaanId")->fetch(PDO::FETCH_ASSOC);
 ?>
    <div class="page">
     <img src="img/uploads/<?php echo $row["activiteit_afbeelding"] ?>" class="img"/>
@@ -38,10 +41,14 @@
         <div class="tekst">Omschrijving: <?php echo $row["activiteit_omschrijving"] ?></div>
         <div class="tekst">Begin tijd: <?php echo $row["activiteit_begin_tijd"] ?></div>
         <div class="tekst">Eind tijd: <?php echo $row["activiteit_eindtijd"] ?></div>
+        <?php if ($isIngeschreven) { ?>
         <form action="inschrijven.php" method="post" >
            <input type="hidden" name="activiteit_id" value="<?php echo $id ?>" >
             <input type="submit" value="inschrijven" class="buttonInschrijven">
         </form>
+        <?php } else { ?>
+            <div class="tekst fs-3">Je bent ingeschreven</div>
+        <?php } ?>
     </div>  
 
 </body>
