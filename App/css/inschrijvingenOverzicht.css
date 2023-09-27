@@ -1,0 +1,20 @@
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>thead>tr:nth-child(odd)>th {
+   background-color: #191d42;
+   color: white;
+}
+
+.table-striped>tbody>tr:nth-child(even)>td, 
+.table-striped>thead>tr:nth-child(even)>th {
+   background-color: #191d42;
+   color: white;
+}
+
+.card {
+    background-color: #0F132F;
+    color: white;
+}
+
+.mt-8 {
+    margin-top: 8rem !important;
+}

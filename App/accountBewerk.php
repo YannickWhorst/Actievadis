@@ -52,7 +52,6 @@ if (isset($_POST['bewerken'])) {
 }
 ?>
 
-
 <?php
 include "footer.php";
 ?>
