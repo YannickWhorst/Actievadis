@@ -134,7 +134,6 @@
                 WHERE `id` = :id";
                
             $stmt = $db->prepare($query);
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->bindParam(':naam', $naam, PDO::PARAM_STR);
             $stmt->bindParam(':locatie', $locatie, PDO::PARAM_STR);
             $stmt->bindParam(':eten', $eten, PDO::PARAM_INT);
@@ -146,6 +145,7 @@
             $stmt->bindParam(':datum', $datum, PDO::PARAM_STR);
             $stmt->bindParam(':startTijd', $startTijd, PDO::PARAM_STR);
             $stmt->bindParam(':eindTijd', $eindTijd, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
              
             if ($stmt->execute()) {
                 echo "Query uitgevoerd successfully<br>";

@@ -31,13 +31,12 @@ if (isset($_POST['bewerken'])) {
     }
 
 }
-
-
 ?>
 
 <head>
     <link href="css/admin.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
     <div class="container registerContainer">
         <h1>Update activiteit </h1>
@@ -90,7 +89,7 @@ if (isset($_POST['bewerken'])) {
                 <label for="afbeelding" class="form-label"><b>Afbeelding</b></label>
                 <input class="form-control" type="file" id="afbeelding" name="afbeelding">
             </div>
-            <input type="hidden" name="id" value="<?php echo $_post['id']; ?>">
+            <input type="hidden" name="id" value="<?php echo $_POST['id']; ?>">
             <input type="Submit" class="btn btn-primary mt-1" name="bewerken" value="bewerken">
         </form>
 
@@ -119,9 +118,5 @@ if(isset($_FILES['afbeelding'])){
 ?>
 
 <?php
-
-
-
-
-include "footer.php";
+    include "footer.php";
 ?>
