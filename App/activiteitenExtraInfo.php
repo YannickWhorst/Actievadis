@@ -21,7 +21,6 @@
 
 
     $covadiaanId = $_SESSION["covadiaan_id"];
-    echo $covadiaanId;
     $isIngeschreven = db_getData("SELECT * FROM inschrijving WHERE `covadiaan_id` = $covadiaanId")->fetch(PDO::FETCH_ASSOC);
     $rowCount = $stmtCount->fetch(PDO::FETCH_ASSOC);
 ?>
