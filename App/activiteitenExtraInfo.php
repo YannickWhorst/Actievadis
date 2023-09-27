@@ -18,8 +18,11 @@
     $stmtCount = db_getData($deelnemerCount);
     $stmt = db_getData($sql);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    $rowCount = $stmtCount->fetch(PDO::FETCH_ASSOC);
 
+
+    $covadiaanId = $_SESSION["covadiaan_id"];
+    $isIngeschreven = db_getData("SELECT * FROM inschrijving WHERE 'covadiaan_id' = $covadiaanId")->fetch(PDO::FETCH_ASSOC);
+    $rowCount = $stmtCount->fetch(PDO::FETCH_ASSOC);
 ?>
    <div class="page">
     <div class="imageClass">
@@ -44,11 +47,14 @@
         <div class="tekst">Omschrijving: <?php echo $row["activiteit_omschrijving"] ?></div>
         <div class="tekst">Datum: <?php echo $row["activiteit_datum"] ?></div>
         <div class="tekst">Van <?php echo date("H:i", strtotime($row["activiteit_begin_tijd"])) ?> tot <?php echo date("H:i", strtotime($row["activiteit_eindtijd"])) ?></div>
-
+        <?php if ($isIngeschreven) { ?>
         <form action="inschrijven.php" method="post" >
             <input type="hidden" name="activiteit_id" value="<?php echo $id ?>" >
             <input type="submit" value="Inschrijven" class="buttonInschrijven">
         </form>
+        <?php } else { ?>
+            <div class="tekst fs-3">Je bent ingeschreven</div>
+        <?php } ?>
     </div>  
 
 </body>
