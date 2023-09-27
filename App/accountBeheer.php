@@ -91,7 +91,7 @@ $accounts = db_getData($sql)
 
 if (isset($_POST['verwijder'])) {
   $id = $_POST['id'];
-  if (db_deleteData($id)) {
+  if (db_deleteData($id, "covadiaan")) {
       // Als de verwijdering succesvol is, toon dan een JavaScript pop-upmelding en vernieuw de pagina
       echo '<script>alert("Account is succesvol verwijderd."); window.location.href = window.location.href;</script>';
   } else {
