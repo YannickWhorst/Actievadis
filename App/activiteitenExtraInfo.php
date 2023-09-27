@@ -14,14 +14,20 @@
 <?php
     $id = $_GET["id"];
     $sql = "SELECT * FROM activiteit WHERE id = $id";
+    $deelnemerCount = "SELECT COUNT(id) FROM `inschrijving` WHERE `activiteit_id` = $id";
+    $stmtCount = db_getData($deelnemerCount);
     $stmt = db_getData($sql);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
+
     $covadiaanId = $_SESSION["covadiaan_id"];
     $isIngeschreven = db_getData("SELECT * FROM inschrijving WHERE 'covadiaan_id' = $covadiaanId")->fetch(PDO::FETCH_ASSOC);
+    $rowCount = $stmtCount->fetch(PDO::FETCH_ASSOC);
 ?>
    <div class="page">
-    <img src="img/uploads/<?php echo $row["activiteit_afbeelding"] ?>" class="img"/>
+    <div class="imageClass">
+        <img src="img/uploads/<?php echo $row["activiteit_afbeelding"] ?>" class="img"/>
+    </div>
     <div class="text">
         <h1 class="Titel"><?php echo $row["activiteit_naam"] ?></h1>
         <div class="tekst">Locatie: <?php echo $row["activiteit_locatie"] ?></div>
@@ -34,17 +40,17 @@
                 }
             ?>
         </div>
-        <div class="tekst">Minimaal aantal deelnemers: <?php echo $row["activiteit_min_deelnemers"] ?></div>
-        <div class="tekst">Maximaal aantal deelnemers: <?php echo $row["activiteit_max_deelnemers"] ?></div>
+        <div class="tekst">Minimaal aantal deelnemers: <?php echo $row["activiteit_min_deelnemers"] ?> (<?php echo $rowCount['COUNT(id)']; ?>) </div>
+        <div class="tekst">Maximaal aantal deelnemers: <?php echo $row["activiteit_max_deelnemers"] ?></div> 
         <div class="tekst">Kosten: <?php echo '€' . $row["activiteit_kosten"] ?></div>
         <div class="tekst">Benodigheden: <?php echo $row["activiteit_benodigdheden"] ?></div>
         <div class="tekst">Omschrijving: <?php echo $row["activiteit_omschrijving"] ?></div>
-        <div class="tekst">Begin tijd: <?php echo $row["activiteit_begin_tijd"] ?></div>
-        <div class="tekst">Eind tijd: <?php echo $row["activiteit_eindtijd"] ?></div>
+        <div class="tekst">Datum: <?php echo $row["activiteit_datum"] ?></div>
+        <div class="tekst">Van <?php echo date("H:i", strtotime($row["activiteit_begin_tijd"])) ?> tot <?php echo date("H:i", strtotime($row["activiteit_eindtijd"])) ?></div>
         <?php if ($isIngeschreven) { ?>
         <form action="inschrijven.php" method="post" >
-           <input type="hidden" name="activiteit_id" value="<?php echo $id ?>" >
-            <input type="submit" value="inschrijven" class="buttonInschrijven">
+            <input type="hidden" name="activiteit_id" value="<?php echo $id ?>" >
+            <input type="submit" value="Inschrijven" class="buttonInschrijven">
         </form>
         <?php } else { ?>
             <div class="tekst fs-3">Je bent ingeschreven</div>
