@@ -24,10 +24,10 @@
         
     }
 
-    function db_deleteData($id) {
+    function db_deleteData($id, $tabel) {
         try {
             $db = db_connect();
-            $queryPDO = $db->prepare("DELETE FROM covadiaan WHERE id = :id");
+            $queryPDO = $db->prepare("DELETE FROM $tabel WHERE id = :id");
             $queryPDO->bindParam(':id', $id, PDO::PARAM_INT);
 
             if($queryPDO->execute()) {
@@ -36,7 +36,7 @@
                 return false;
             }
         } catch(PDOException $e) {
-            die("Error: " . $e-getMessage());
+            //die("Error: " . $e-getMessage());
             return false;
         }
     }
@@ -98,3 +98,48 @@
             return false;
         }
     }
+
+    function db_updateActiviteit($id, $naam, $locatie, $eten, $minDeelnemers, $maxDeelnemers, $kosten, $benodigdheden, $omschrijving, $datum, $startTijd, $eindTijd) {
+        try {
+            $db = db_connect();
+            $query = "UPDATE `activiteit` SET 
+                `activiteit_naam` = :naam,
+                `activiteit_locatie` = :locatie,
+                `activiteit_eten` = :eten,
+                `activiteit_min_deelnemers` = :minDeelnemers,
+                `activiteit_max_deelnemers` = :maxDeelnemers,
+                `activiteit_kosten` = :kosten,
+                `activiteit_benodigdheden` = :benodigdheden,
+                `activiteit_omschrijving` = :omschrijving,
+                `activiteit_datum` = :datum,
+                `activiteit_begin_tijd` = :startTijd,
+                `activiteit_eindtijd` = :eindTijd
+                WHERE `id` = :id";
+               
+            $stmt = $db->prepare($query);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':naam', $naam, PDO::PARAM_STR);
+            $stmt->bindParam(':locatie', $locatie, PDO::PARAM_STR);
+            $stmt->bindParam(':eten', $eten, PDO::PARAM_INT);
+            $stmt->bindParam(':minDeelnemers', $minDeelnemers, PDO::PARAM_INT);
+            $stmt->bindParam(':maxDeelnemers', $maxDeelnemers, PDO::PARAM_INT);
+            $stmt->bindParam(':kosten', $kosten, PDO::PARAM_STR);
+            $stmt->bindParam(':benodigdheden', $benodigdheden, PDO::PARAM_STR);
+            $stmt->bindParam(':omschrijving', $omschrijving, PDO::PARAM_STR);
+            $stmt->bindParam(':datum', $datum, PDO::PARAM_STR);
+            $stmt->bindParam(':startTijd', $startTijd, PDO::PARAM_STR);
+            $stmt->bindParam(':eindTijd', $eindTijd, PDO::PARAM_STR);
+             
+            if ($stmt->execute()) {
+                echo "Query uitgevoerd successfully<br>";
+                return true;
+            } else {
+                echo "Fout bij het uitvoeren van de query: " . implode(" - ", $stmt->errorInfo()) . "<br>";
+                return false;
+            }
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+            return false;
+        }
+    }
+    
