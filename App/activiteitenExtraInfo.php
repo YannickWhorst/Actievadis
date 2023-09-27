@@ -45,7 +45,7 @@
         <div class="tekst"><b>Kosten: €</b><?php echo $row["activiteit_kosten"] ?></div>
         <div class="tekst"><b>Benodigheden:</b> <?php echo $row["activiteit_benodigdheden"] ?></div>
         <div class="tekst"><b>Omschrijving:</b> <?php echo $row["activiteit_omschrijving"] ?></div>
-        <div class="tekst"><b>Datum:</b> <?php echo $row["activiteit_datum"] ?></div>
+        <div class="tekst"><b>Datum:</b> <?php echo date("d-m-Y", strtotime($row['activiteit_datum'])) ?></div>
         <div class="tekst"><b>Van</b> <?php echo date("H:i", strtotime($row["activiteit_begin_tijd"])) ?> <b>tot</b> <?php echo date("H:i", strtotime($row["activiteit_eindtijd"])) ?></div>
         <?php if ($isIngeschreven == null) { ?>
         <form action="inschrijven.php" method="post" >

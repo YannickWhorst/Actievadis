@@ -13,7 +13,10 @@
 <body>
 
 <?php
-    $sql = "SELECT id, activiteit_afbeelding, activiteit_naam, activiteit_locatie, activiteit_kosten, activiteit_datum FROM activiteit";
+    $sql = "SELECT id, activiteit_afbeelding, activiteit_naam, activiteit_locatie, activiteit_kosten, activiteit_datum 
+            FROM activiteit 
+            WHERE activiteit_datum > CURRENT_TIMESTAMP
+            ORDER BY activiteit_datum";
     $stmt = db_getData($sql);
 ?>
 
@@ -30,7 +33,7 @@
                         <?php echo $row["activiteit_naam"] ?>
                     </div>
                     <div class="TxtCard">
-                        <?php echo "Datum: &nbsp" . $row["activiteit_datum"] ?>
+                        <?php echo "Datum: &nbsp" . date("d-m-Y", strtotime($row['activiteit_datum'])) ?>
                     </div>
                     <div class="TxtCard">
                         <?php echo "Prijs: &nbsp€" . $row["activiteit_kosten"] ?>
