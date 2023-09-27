@@ -3,8 +3,14 @@ include "header.php";
 ?>
 
 <?php
-    $sql = "SELECT activiteit_id, inschrijving_opmerking FROM inschrijving WHERE covadiaan_id = ".$_SESSION['covadiaan_id'];
+    $sql = "SELECT id, activiteit_id, inschrijving_opmerking FROM inschrijving WHERE covadiaan_id = ".$_SESSION['covadiaan_id'];
     $inschrijvingen = db_getData($sql);
+    if($inschrijvingen->fetch(PDO::FETCH_ASSOC) == '') {
+        echo "<div class='container detailsContainer text-center'>
+        <h1>Geen inschrijvingen</h1>
+        <p>Graag inschrijven voor een <a href='activiteiten.php'>activiteit</a>.</p>
+        </div>";
+    }
 ?>
 
 <body>
@@ -27,10 +33,19 @@ include "header.php";
             <small class="text-muted">Eindigt op: <?php echo $activiteit["activiteit_eindtijd"]; ?></small>
         </div>
         </div>
-        <div class="card-footer d-flex justify-content-between detailButtons">
-            <a href="/recepts/{{$recept->id}}/edit" class="btn btn-primary btn-block btn-warning">Uitschrijven</a>
-        </div>
+        <form class="card-footer d-flex justify-content-between detailButtons" method="post" action="#">
+            <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+            <input class="btn btn-primary btn-block btn-warning" type="submit" name="uitschrijven" value="Uitschrijven">
+        </form>
     </div>
     <?php } ?>
     </div>
 </body>
+
+<?php
+    if(isset($_POST['uitschrijven'])) {
+        if(db_uitschrijven($_POST["id"])) {
+            header("Location: mijnActiviteiten.php");
+        }
+    }
+?>

@@ -41,6 +41,23 @@
         }
     }
 
+    function db_uitschrijven($id) {
+        try {
+            $db = db_connect();
+            $queryPDO = $db->prepare("DELETE FROM inschrijving WHERE id = :id");
+            $queryPDO->bindParam(':id', $id, PDO::PARAM_INT);
+
+            if($queryPDO->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch(PDOException $e) {
+            die("Error: " . $e-getMessage());
+            return false;
+        }
+    }
+
     // Database informatie in de database stoppen 
     function db_insertData($query) {
         try{

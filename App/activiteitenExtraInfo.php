@@ -12,13 +12,15 @@
 </head>
 <body>
 <?php
-    $id = $_POST["id"];
+    $id = $_GET["id"];
     $sql = "SELECT * FROM activiteit WHERE id = $id";
     $stmt = db_getData($sql);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
    <div class="page">
-    <img src="img/uploads/<?php echo $row["activiteit_afbeelding"] ?>" class="img"/>
+    <div class="imageClass">
+        <img src="img/uploads/<?php echo $row["activiteit_afbeelding"] ?>" class="img"/>
+    </div>
     <div class="text">
         <h1 class="Titel"><?php echo $row["activiteit_naam"] ?></h1>
         <div class="tekst">Locatie: <?php echo $row["activiteit_locatie"] ?></div>

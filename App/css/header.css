@@ -1,3 +1,7 @@
+body {
+    background-color: #f5af00;
+}
+
 header {
     height: 100px;
     width: 100%;
@@ -5,15 +9,20 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: white;
 }
 
 .headerLogo {
     height: 100px;
 }
 
-.logInLink {
+.headerLink {
     text-decoration: none;
     font-size: 20px;
     color: #0f132f;
     font-weight: 700;
+}
+
+.headerLink:hover {
+    text-decoration: underline;
 }
