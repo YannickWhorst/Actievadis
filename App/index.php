@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 
-<div class="container d-flex justify-content-center">
+<div class="container d-flex justify-content-center mt-8">
     <form method="POST" action="" class="card text-center w-50 d-flex align-items-center">
         <h2>Login</h2>
         <div class="form-floating mb-3 w-75">

@@ -8,3 +8,7 @@
 .inlog-btn:hover {
     background-color: #0f132fe1;
 }
+
+.mt-8 {
+    margin-top: 8rem !important;
+}
