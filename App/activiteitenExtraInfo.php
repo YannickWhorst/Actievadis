@@ -50,16 +50,7 @@
                 <p class="tekst"><b>Kosten: €</b><?php echo $row["activiteit_kosten"] ?></p>
                 <p class="tekst"><b>Benodigheden:</b> <?php echo $row["activiteit_benodigdheden"] ?></p>
             </div>
-        <div class="tekst"><b>Locatie:</b> <?php echo $row["activiteit_locatie"] ?></div>
-        <div class="tekst"><b>Inclusief eten:</b>  
-            <?php
-                if($row["activiteit_eten"] == 1){
-                    echo 'ja'; 
-                } else{
-                    echo 'nee';  
-                }
-            ?>
-        </div>
+        </div>  
         <p class="tekst"><b>Omschrijving:</b> <?php echo $row["activiteit_omschrijving"] ?></p>
         <?php if ($isIngeschreven == null) { ?>
         <form action="inschrijven.php" method="post" >
