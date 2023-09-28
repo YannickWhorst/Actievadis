@@ -18,9 +18,15 @@
     $stmtCount = db_getData($deelnemerCount);
     $stmt = db_getData($sql);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    $covadiaanId = $_SESSION["covadiaan_id"];
-    $isIngeschreven = db_getData("SELECT * FROM inschrijving WHERE `covadiaan_id` = $covadiaanId")->fetch(PDO::FETCH_ASSOC);
+    
+    $isIngeschreven = false;
+    if (isset($_SESSION['covadiaan'])) {
+        $covadiaanId = $_SESSION["covadiaan_id"];
+        $isIngeschreven = db_getData("SELECT * FROM inschrijving WHERE `activiteit_id` = $id AND `covadiaan_id` = $covadiaanId")->fetch(PDO::FETCH_ASSOC);
+    } elseif (isset($_SESSION["guest"])) {
+        $gastNaam = $_SESSION["guest"];
+        $isIngeschreven = db_getData("SELECT * FROM inschrijving WHERE `activiteit_id` = $id AND `gast_naam` = '$gastNaam'")->fetch(PDO::FETCH_ASSOC);
+    }
     $rowCount = $stmtCount->fetch(PDO::FETCH_ASSOC);
 ?>
    <div class="page mt-5">
