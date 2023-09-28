@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 
-<div class="container d-flex align-items-center flex-column">
+<div class="container d-flex justify-content-center flex-column mt-8">
     <form method="POST" action="" class="card text-center w-50 d-flex align-items-center mt-4">
         <h2>Login</h2>
         <div class="form-floating mb-3 w-75">

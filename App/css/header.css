@@ -9,7 +9,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: white;
+    background-color: #0f132f;
 }
 
 .headerLogo {
@@ -19,7 +19,7 @@ header {
 .headerLink {
     text-decoration: none;
     font-size: 20px;
-    color: #0f132f;
+    color: white;
     font-weight: 700;
 }
 
