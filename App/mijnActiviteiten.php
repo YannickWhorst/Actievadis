@@ -3,13 +3,20 @@ include "header.php";
 ?>
 
 <?php
-    $sql = "SELECT id, activiteit_id, inschrijving_opmerking FROM inschrijving WHERE covadiaan_id = ".$_SESSION['covadiaan_id'];
+    $sql;
+    if (isset($_SESSION['covadiaan'])) {
+        $sql = "SELECT id, activiteit_id, inschrijving_opmerking FROM inschrijving WHERE covadiaan_id = ".$_SESSION['covadiaan_id'];
+    } else {
+        $sql = "SELECT id, activiteit_id, inschrijving_opmerking FROM inschrijving WHERE `gast_naam` = '".$_SESSION['guest'] . "'";
+    }
     $inschrijvingen = db_getData($sql);
     if($inschrijvingen->fetch(PDO::FETCH_ASSOC) == '') {
         echo "<div class='container detailsContainer text-center'>
         <h1>Geen inschrijvingen</h1>
         <p>Graag inschrijven voor een <a href='activiteiten.php'>activiteit</a>.</p>
         </div>";
+    } else {
+        $inschrijvingen = db_getData($sql);
     }
 ?>
 

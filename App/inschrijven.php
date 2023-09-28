@@ -1,22 +1,27 @@
 <?php
     include "header.php";
 
-    if (!isset($_SESSION['covadiaan'])) {
+    if (!(isset($_SESSION['covadiaan']) || isset($_SESSION['guest']))) {
         header("Location: index.php");
         exit();
     }
 
-    if(!isset($_POST['activiteit_id']) || !isset($_SESSION["covadiaan_id"])) {
+    if(!isset($_POST['activiteit_id']) || !(isset($_SESSION['covadiaan_id']) || isset($_SESSION['guest']))) {
         header("Location: activiteiten.php");
         exit();
     }
 
-    $covadiaan_id = $_SESSION['covadiaan_id'];
     $activiteit_id = $_POST["activiteit_id"];
 
-    $sql = "SELECT covadiaan_naam FROM covadiaan WHERE id = " . $covadiaan_id;
-    $stmt = db_getData($sql);
-    $covadiaan = $stmt->fetch(PDO::FETCH_ASSOC);
+    $naam;
+    if (isset($_POST['covadiaan'])) {
+        $sql = "SELECT covadiaan_naam FROM covadiaan WHERE id = " . $covadiaan_id;
+        $stmt = db_getData($sql);
+        $naam = $stmt->fetch(PDO::FETCH_ASSOC)['covadiaan_naam'];
+    } else {
+        $naam = $_SESSION['guest'];
+    }
+    
 
     $sql = "SELECT id, activiteit_naam FROM activiteit WHERE id = " . $activiteit_id;
     $stmt = db_getData($sql);
@@ -25,8 +30,17 @@
     if(isset($_POST['inschrijven_activiteit'])) {
         $opmerking = isset($_POST['opmerking']) ? $_POST['opmerking'] : NULL;
 
-        $sql = "INSERT INTO `inschrijving`(`activiteit_id`, `covadiaan_id`, `inschrijving_opmerking`) 
+        $sql;
+        if (isset($_POST['covadiaan'])) {
+            $covadiaan_id = $_SESSION['covadiaan_id'];
+            $sql = "INSERT INTO `inschrijving`(`activiteit_id`, `covadiaan_id`, `inschrijving_opmerking`) 
                 VALUES ('$activiteit_id','$covadiaan_id','$opmerking')";
+        } else {
+            $covadiaan_id = $_SESSION['covadiaan_id'];
+            $sql = "INSERT INTO `inschrijving`(`activiteit_id`, `gast_naam`, `inschrijving_opmerking`) 
+                VALUES ('$activiteit_id','$naam','$opmerking')";
+        }
+        
         
         if(db_insertData($sql)) {
             header("Location: activiteiten.php");
@@ -38,7 +52,7 @@
 ?>
 
 <div class="container">
-    <h2><b><?= $covadiaan["covadiaan_naam"] ?></b>, inschrijven voor <b><?= $activiteit["activiteit_naam"]; ?></b>.</h2>
+    <h2><b><?= $naam ?></b>, inschrijven voor <b><?= $activiteit["activiteit_naam"]; ?></b>.</h2>
     <form method="post" action="">
         <div class="form-floating mb-3 w-25">
             <textarea type="text" class="form-control" id="opmerking" name="opmerking" placeholder="Opmerking"></textarea>

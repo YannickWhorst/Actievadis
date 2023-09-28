@@ -17,7 +17,7 @@
             <img class="headerLogo" src="img/logo_covadis_2016.png"></img>
         </a>
         <?php
-        if (!isset($_SESSION['covadiaan'])) { ?>
+        if (!(isset($_SESSION['covadiaan']) || isset($_SESSION['guest']))) { ?>
         <a class="headerLink" href="index.php">Inloggen</a>
         <?php } ?>
         <?php
@@ -29,6 +29,8 @@
         
         <?php } else { ?>
         <a class="headerLink" href="mijnActiviteiten.php">Mijn activiteiten</a>
-        <?php } } ?>
+        <?php } } elseif (isset($_SESSION['guest'])) { ?>
+        <a class="headerLink" href="mijnActiviteiten.php">Mijn activiteiten</a>
+        <?php } ?>
     </header>
 </body>
