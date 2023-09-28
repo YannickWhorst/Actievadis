@@ -39,6 +39,7 @@
                     echo 'nee';  
                 }
             ?>
+            
         </div>
         <div class="tekst"><b>Minimaal deelnemers:</b> <?php echo $row["activiteit_min_deelnemers"] ?> (<?php echo $rowCount['COUNT(id)']; ?>) </div>
         <div class="tekst"><b>Maximaal deelnemers:</b> <?php echo $row["activiteit_max_deelnemers"] ?></div> 
