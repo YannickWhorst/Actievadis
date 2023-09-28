@@ -5,7 +5,17 @@ $sql = "SELECT * FROM activiteit";
 $activiteiten = db_getData($sql)
 ?>
 
+<head>
+    <link href="css/activiteitenBewerk.css" type="text/css" rel="stylesheet">
+</head>
+
+<div class="container">
+    
+
 <h1>Activiteiten</h1>
+<form method="post" action="activiteitenInvoeg.php">
+    <input type="submit" class="create" value="Activiteit aanmaken">
+</form>
 <table class="table">
     <thead>
         <tr>
@@ -48,7 +58,7 @@ $activiteiten = db_getData($sql)
         <?php } ?>
     </tbody>
 </table>
-
+</div>
 <?php
 
 if (isset($_POST['verwijder'])) {

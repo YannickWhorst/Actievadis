@@ -35,10 +35,14 @@ if (isset($_POST['bewerken'])) {
 
 <head>
     <link href="css/admin.css" rel="stylesheet" type="text/css">
+    <link href="css/activiteitenBewerk.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
     <div class="container registerContainer">
+        <form method="post" action="activiteitenBeheer.php">
+            <input type="submit" class="create mt-4" value="Terug">
+        </form>
         <h1>Update activiteit </h1>
         <form method="post" action="" enctype="multipart/form-data">
             <div class="form-floating mb-3">

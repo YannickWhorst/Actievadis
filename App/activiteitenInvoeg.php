@@ -32,9 +32,13 @@ if(isset($_POST['voeg'])) {
 
 <head>
     <link href="css/admin.css" rel="stylesheet" type="text/css">
+    <link href="css/activiteitenBewerk.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div class="container registerContainer">
+    <form method="post" action="activiteitenBeheer.php">
+        <input type="submit" class="create mt-4" value="Terug">
+    </form>
         <h1>Voeg activiteit toe</h1>
         <form method="post" action="#" enctype="multipart/form-data">
             <div class="form-floating mb-3">
