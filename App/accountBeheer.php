@@ -100,7 +100,5 @@ if (isset($_POST['verwijder'])) {
   }
 }
 
-?>
-<?php
-include "footer.php";
+  include "footer.php";
 ?>

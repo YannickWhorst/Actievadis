@@ -57,4 +57,6 @@ include "header.php";
             header("Location: mijnActiviteiten.php");
         }
     }
+    
+    include "footer.php";
 ?>
