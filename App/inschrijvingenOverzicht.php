@@ -33,7 +33,7 @@
     <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
         <tr>
             <td><?= getNaam($row['activiteit_id'], "activiteit_naam", "activiteit") ?></td>
-            <td><?= getNaam($row['covadiaan_id'], "covadiaan_naam", "covadiaan") ?></td>
+            <td><?php if(isset($row['gast_naam'])) { echo $row['gast_naam'] . " (gast)"; } else { echo getNaam($row['covadiaan_id'], "covadiaan_naam", "covadiaan"); } ?></td>
             <td><?= $row['inschrijving_opmerking'] == '' 
                     ? "<p><small><i>Geen opmerking</i></small></p>" 
                     : $row['inschrijving_opmerking'] ?>
