@@ -15,6 +15,7 @@
 
     $naam;
     if (isset($_SESSION['covadiaan'])) {
+        $covadiaan_id = $_SESSION['covadiaan_id'];
         $sql = "SELECT covadiaan_naam FROM covadiaan WHERE id = " . $covadiaan_id;
         $stmt = db_getData($sql);
         $naam = $stmt->fetch(PDO::FETCH_ASSOC)['covadiaan_naam'];
