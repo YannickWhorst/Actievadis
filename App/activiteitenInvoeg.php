@@ -89,7 +89,7 @@ if(isset($_POST['voeg'])) {
                 <label for="afbeelding" class="form-label"><b>Afbeelding</b></label>
                 <input class="form-control" type="file" id="afbeelding" name="afbeelding">
             </div>
-            <input type="Submit" class="btn btn-primary mt-1" name="voeg" value="Voeg toe">
+            <input type="Submit" class="btn btn-primary mt-1 mb-3" name="voeg" value="Voeg toe">
         </form>
 
         

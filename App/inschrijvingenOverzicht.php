@@ -19,9 +19,9 @@
     <link rel="stylesheet" href="css/inschrijvingenOverzicht.css">
 </head>
 
-<div class="card mt-8 w-50 inschrijvingen container d-flex align-items-center flex-column">
+<div class="card mt-8 inschrijvingen container d-flex align-items-center flex-column">
     <h1>Inschrijvingen overzicht</h1>
-    <table class="table table-hover table-striped w-50 text-center">
+    <table class="table table-hover table-striped text-center">
         <thead>
             <tr>
                 <th>Activiteit</th>
