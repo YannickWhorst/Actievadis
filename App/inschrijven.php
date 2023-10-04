@@ -1,7 +1,7 @@
 <?php
     include "header.php";
 
-    if (!(isset($_SESSION['covadiaan']) || isset($_SESSION['guest']))) {
+    if (!(isset($_SESSION['covadiaan']) && !isset($_SESSION['guest']))) {
         header("Location: index.php");
         exit();
     }

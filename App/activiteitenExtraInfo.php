@@ -1,5 +1,10 @@
 <?php
     include "header.php";
+
+    if (!isset($_SESSION['covadiaan']) && !isset($_SESSION['guest'])) {
+        header("Location: index.php");
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
