@@ -43,15 +43,14 @@ $activiteiten = db_getData($sql)
                 <td><?php echo $row['activiteit_benodigdheden']; ?></td>
                 <td><?php echo $row['activiteit_omschrijving']; ?></td>
                 <td><?php echo date("d-m-Y", strtotime($row['activiteit_datum'])) . ' ' . date("H:i", strtotime($row["activiteit_begin_tijd"])) . ' tot ' . date("H:i", strtotime($row["activiteit_begin_tijd"])); ?></td>
-                <td class="d-flex gap-3">
-                    
+                <td class="bg-white">
                     <form method="post" action="activiteitenBewerk.php">
                         <input type="hidden" id="id" name="id" value="<?php echo $row['id'] ?>">
-                        <button type="submit" name="bewerk" class="btn btn-warning">Bewerk</button>
+                        <button type="submit" name="bewerk" class="btn btn-warning w-100">Bewerk</button>
                     </form>
                     <form method="post" action="">
                         <input type="hidden" id="id" name="id" value="<?php echo $row['id'] ?>">
-                        <button type="submit" name="verwijder" class="btn btn-danger">Verwijder</button>
+                        <button type="submit" name="verwijder" class="btn btn-danger w-100">Verwijder</button>
                     </form>
                 </td>
             </tr>
