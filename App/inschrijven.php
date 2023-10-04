@@ -14,7 +14,7 @@
     $activiteit_id = $_POST["activiteit_id"];
 
     $naam;
-    if (isset($_POST['covadiaan'])) {
+    if (isset($_SESSION['covadiaan'])) {
         $sql = "SELECT covadiaan_naam FROM covadiaan WHERE id = " . $covadiaan_id;
         $stmt = db_getData($sql);
         $naam = $stmt->fetch(PDO::FETCH_ASSOC)['covadiaan_naam'];
