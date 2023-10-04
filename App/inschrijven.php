@@ -32,7 +32,7 @@
         $opmerking = isset($_POST['opmerking']) ? $_POST['opmerking'] : NULL;
 
         $sql;
-        if (isset($_POST['covadiaan'])) {
+        if (isset($_SESSION['covadiaan'])) {
             $covadiaan_id = $_SESSION['covadiaan_id'];
             $sql = "INSERT INTO `inschrijving`(`activiteit_id`, `covadiaan_id`, `inschrijving_opmerking`) 
                 VALUES ('$activiteit_id','$covadiaan_id','$opmerking')";
