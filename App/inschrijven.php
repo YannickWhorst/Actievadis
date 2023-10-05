@@ -1,7 +1,7 @@
 <?php
     include "header.php";
 
-    if (!(isset($_SESSION['covadiaan']) || isset($_SESSION['guest']))) {
+    if (!(isset($_SESSION['covadiaan']) && !isset($_SESSION['guest']))) {
         header("Location: index.php");
         exit();
     }
@@ -14,7 +14,8 @@
     $activiteit_id = $_POST["activiteit_id"];
 
     $naam;
-    if (isset($_POST['covadiaan'])) {
+    if (isset($_SESSION['covadiaan'])) {
+        $covadiaan_id = $_SESSION['covadiaan_id'];
         $sql = "SELECT covadiaan_naam FROM covadiaan WHERE id = " . $covadiaan_id;
         $stmt = db_getData($sql);
         $naam = $stmt->fetch(PDO::FETCH_ASSOC)['covadiaan_naam'];
@@ -31,7 +32,7 @@
         $opmerking = isset($_POST['opmerking']) ? $_POST['opmerking'] : NULL;
 
         $sql;
-        if (isset($_POST['covadiaan'])) {
+        if (isset($_SESSION['covadiaan'])) {
             $covadiaan_id = $_SESSION['covadiaan_id'];
             $sql = "INSERT INTO `inschrijving`(`activiteit_id`, `covadiaan_id`, `inschrijving_opmerking`) 
                 VALUES ('$activiteit_id','$covadiaan_id','$opmerking')";

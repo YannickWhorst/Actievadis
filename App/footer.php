@@ -3,6 +3,6 @@
 </head>
 <body>
     <footer class="fixed-bottom">
-        Footer
+        &copy; Actievadis
     </footer>
 </body>

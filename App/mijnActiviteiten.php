@@ -21,30 +21,32 @@ include "header.php";
 ?>
 
 <body>
-    <div class="container detailsContainer text-start">
+    <div class="container detailsContainer text-start mt-2">
     <?php while ($row = $inschrijvingen->fetch(PDO::FETCH_ASSOC)) {
         $sql = "SELECT * FROM activiteit WHERE id = ".$row["activiteit_id"];
         $activiteit = db_getData($sql)->fetch(PDO::FETCH_ASSOC);
     ?>
-    <div class="card mx-auto mb-4">
-        <div class="imgDiv mx-auto">
-            <img class="w-100 m-auto" src="img/uploads/<?php echo $activiteit['activiteit_afbeelding']; ?>"/>
+        <div class="card mx-auto w-75 mb-4">
+            <div class="imgDiv mx-auto d-flex justify-content-center">
+                <img class="w-50 m-auto" src="img/uploads/<?php echo $activiteit['activiteit_afbeelding']; ?>"/>
+            </div>
+            <div class="card-body">
+            <h5 class="card-title fs-2"><?php echo $activiteit["activiteit_naam"]; ?></h5>
+            <div class="card-text">
+                <h5>Locatie: <?php echo $activiteit["activiteit_locatie"]; ?></h5>  
+                <h5>Opmerking: <?php echo $row["inschrijving_opmerking"] == '' 
+                                ? "<small><i>Geen opmerking</i></small>" 
+                                : $row["inschrijving_opmerking"]; ?></h5>
+                <p class="body rounded border p-2"><?php echo $activiteit["activiteit_omschrijving"]; ?></p>
+                <small class="text-muted">Begint op: <?php echo $activiteit["activiteit_begin_tijd"]; ?></small><br>
+                <small class="text-muted">Eindigt op: <?php echo $activiteit["activiteit_eindtijd"]; ?></small>
+            </div>
+            </div>
+            <form class="card-footer d-flex justify-content-between detailButtons" method="post" action="#">
+                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                <input class="btn btn-primary btn-block btn-warning" type="submit" name="uitschrijven" value="Uitschrijven">
+            </form>
         </div>
-        <div class="card-body">
-        <h5 class="card-title fs-2"><?php echo $activiteit["activiteit_naam"]; ?></h5>
-        <div class="card-text">
-            <p class="body rounded border p-2"><?php echo $activiteit["activiteit_omschrijving"]; ?></p>
-            <h5>Locatie: <?php echo $activiteit["activiteit_locatie"]; ?></h5>
-            <h5>Opmerking: <?php echo $row["inschrijving_opmerking"]; ?></h5>
-            <small class="text-muted">Begint op: <?php echo $activiteit["activiteit_begin_tijd"]; ?></small><br>
-            <small class="text-muted">Eindigt op: <?php echo $activiteit["activiteit_eindtijd"]; ?></small>
-        </div>
-        </div>
-        <form class="card-footer d-flex justify-content-between detailButtons" method="post" action="#">
-            <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-            <input class="btn btn-primary btn-block btn-warning" type="submit" name="uitschrijven" value="Uitschrijven">
-        </form>
-    </div>
     <?php } ?>
     </div>
 </body>
@@ -55,4 +57,6 @@ include "header.php";
             header("Location: mijnActiviteiten.php");
         }
     }
+    
+    include "footer.php";
 ?>

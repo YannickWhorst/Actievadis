@@ -24,19 +24,19 @@ $accounts = db_getData($sql)
         <h1>Registreer personen</h1>
         <form method="post" action="">
             <div class="form-floating mb-3">
-                <input type="email" class="form-control" name="email" placeholder="naam@voorbeeld.com">
-                <label for="email">Email address</label>
+                <input type="email" class="form-control" name="email" placeholder="naam@voorbeeld.com" required>
+                <label for="email">Email address *</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="name" placeholder="naam">
-                <label for="name">Name</label>
+                <input type="text" class="form-control" name="name" placeholder="naam" required>
+                <label for="name">Name *</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="password" class="form-control" name="password" placeholder="wachtwoord">
-                <label for="password">Wachtwoord</label>
+                <input type="password" class="form-control" name="password" placeholder="wachtwoord" required>
+                <label for="password">Wachtwoord *</label>
             </div>
             <div class="form-floating">
-                <select class="form-select" name="rolId">
+                <select class="form-select" name="rolId" required>
                   <option value="1" selected>Werknemer</option>
                   <option value="2">Admin</option>
                 </select>
@@ -102,7 +102,5 @@ if (isset($_POST['verwijder'])) {
   }
 }
 
-?>
-<?php
-include "footer.php";
+  include "footer.php";
 ?>

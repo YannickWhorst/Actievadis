@@ -43,15 +43,14 @@ $activiteiten = db_getData($sql)
                 <td><?php echo $row['activiteit_benodigdheden']; ?></td>
                 <td><?php echo $row['activiteit_omschrijving']; ?></td>
                 <td><?php echo date("d-m-Y", strtotime($row['activiteit_datum'])) . ' ' . date("H:i", strtotime($row["activiteit_begin_tijd"])) . ' tot ' . date("H:i", strtotime($row["activiteit_begin_tijd"])); ?></td>
-                <td class="d-flex gap-3">
-                    
+                <td class="bg-white">
                     <form method="post" action="activiteitenBewerk.php">
                         <input type="hidden" id="id" name="id" value="<?php echo $row['id'] ?>">
-                        <button type="submit" name="bewerk" class="btn btn-warning">Bewerk</button>
+                        <button type="submit" name="bewerk" class="btn btn-warning w-100">Bewerk</button>
                     </form>
-                    <form method="post" action="">
+                    <form name="deleteForm" method="post" action="" onsubmit="confirmDelete()">
                         <input type="hidden" id="id" name="id" value="<?php echo $row['id'] ?>">
-                        <button type="submit" name="verwijder" class="btn btn-danger">Verwijder</button>
+                        <input type="submit" name="verwijder" class="btn btn-danger w-100" value="Verwijder">
                     </form>
                 </td>
             </tr>
@@ -60,18 +59,22 @@ $activiteiten = db_getData($sql)
 </table>
 </div>
 <?php
+    if (isset($_POST['verwijder'])) {
+        $id = $_POST['id'];
+        if (db_deleteData($id, "activiteit")) {
+            // Als de verwijdering succesvol is, toon dan een JavaScript pop-upmelding en vernieuw de pagina
+            echo '<script>alert("Activiteit is succesvol verwijderd."); window.location.href = window.location.href;</script>';
+        } else {
+            // Als er een fout optreedt, toon dan een JavaScript pop-upmelding met de foutmelding en vernieuw de pagina
+            echo '<script>alert("Fout bij het verwijderen van het activiteitt: ' . $conn->error . '"); window.location.href = window.location.href;</script>';
+        }
+    }
 
-if (isset($_POST['verwijder'])) {
-  $id = $_POST['id'];
-  if (db_deleteData($id, "activiteit")) {
-      // Als de verwijdering succesvol is, toon dan een JavaScript pop-upmelding en vernieuw de pagina
-      echo '<script>alert("Activiteit is succesvol verwijderd."); window.location.href = window.location.href;</script>';
-  } else {
-      // Als er een fout optreedt, toon dan een JavaScript pop-upmelding met de foutmelding en vernieuw de pagina
-      echo '<script>alert("Fout bij het verwijderen van het activiteitt: ' . $conn->error . '"); window.location.href = window.location.href;</script>';
-  }
-}
-
-
-include "footer.php";
+    include "footer.php";
 ?>
+
+<script>
+    function confirmDelete() {
+        return confirm("Weet je zeker dat je deze activiteit wil verwijderen?");
+    }
+</script>

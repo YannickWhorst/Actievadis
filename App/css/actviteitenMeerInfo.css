@@ -49,15 +49,16 @@
     width: 175px;
     height: 40px;
     border: 2px solid #0F132F;
-    background-color: white;
     border-radius: 10px;
     font-size: 16px;
-    color: #0F132F;
     transition: all 0.3s;
+    background-color: #0F132F;
+    color: #F9B123;
 }
 
 .buttonInschrijven:hover
 {
-    background-color: #0F132F;
-    color: #F9B123;
+    background-color: white;
+    color: #0F132F;
+
 }
