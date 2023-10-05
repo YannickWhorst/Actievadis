@@ -71,10 +71,12 @@ $accounts = db_getData($sql)
                   <input type="hidden" id="id" name="id" value="<?php echo $row['id'] ?>">    
                   <button type="submit" name="bewerk" class="btn btn-warning">Bewerk</button>
                 </form>
+
                 <form method="post" action=""> 
                   <input type="hidden" id="id" name="id" value="<?php echo $row['id'] ?>">    
                   <button type="submit" name="verwijder" class="btn btn-danger">Verwijder</button>
                 </form>
+                
                 </td>
                 
               </tr>
