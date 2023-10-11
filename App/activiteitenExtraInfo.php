@@ -89,7 +89,7 @@
                     return false;
                 }
             } catch(PDOException $e) {
-                die("Error: " . $e-getMessage());
+             //   die("Error: " . $e-getMessage());
                 return false;
             }
         }
