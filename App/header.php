@@ -42,6 +42,8 @@
     if(isset($_POST['uitloggen'])) {
         if(isset($_SESSION['covadiaan'])){
             $_SESSION['covadiaan'] = null;
+            $_SESSION['covadiaan_id'] = null;
+            $_SESSION['rol_id'] = null;
         } else if(isset($_SESSION['guest'])) {
             $_SESSION['guest'] = null;
         }
