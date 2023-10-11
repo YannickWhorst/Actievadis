@@ -1,5 +1,9 @@
 <?php
     include "header.php";
+
+    $sql = "SELECT * FROM covadiaan WHERE `id` = " . $_POST['id'];
+    $accounts = db_getData($sql);
+    $row = $accounts->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <body>
@@ -7,15 +11,15 @@
         <h1>Bewerk persoon</h1>
         <form method="post" action="#">
             <div class="form-floating mb-3">
-                <input type="email" class="form-control" name="email" placeholder="naam@voorbeeld.com">
+                <input type="email" class="form-control" name="email" placeholder="naam@voorbeeld.com" value="<?php echo $row['covadiaan_email']; ?>">
                 <label for="email">Email address</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="name" placeholder="naam">
+                <input type="text" class="form-control" name="name" placeholder="naam" value="<?php echo $row['covadiaan_naam']; ?>">
                 <label for="name">Name</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="password" class="form-control" name="password" placeholder="wachtwoord">
+                <input type="password" class="form-control" name="password" placeholder="wachtwoord" value="<?php echo $row['covadiaan_wachtwoord']; ?>">
                 <label for="password">Wachtwoord</label>
             </div>
             <div class="form-floating">
@@ -25,7 +29,7 @@
                 </select>
                 <label for="rolId">Rol</label>
             </div>
-            <input type="hidden" name="id" value="<?php echo $_POST['id']; ?>">
+            <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
             <input type="submit" class="btn btn-primary mt-3" name="bewerken" value="Bewerken">
         </form>
 </body>
