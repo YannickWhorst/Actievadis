@@ -25,13 +25,21 @@ $activiteiten = db_getData($sql)
                 <th scope="col">Benodigdheden</th>
                 <th scope="col">Omschrijving</th>
                 <th scope="col">Datum</th>
+                <th scope="col">Bekijks</th>
                 <th scope="col">Acties</th>
             </tr>
         </thead>
         <tbody>
             <?php
             // Hieronder veronderstel ik dat je een query hebt uitgevoerd om activiteitsgegevens op te halen
-            while ($row = $activiteiten->fetch(PDO::FETCH_ASSOC)) { ?>
+            while ($row = $activiteiten->fetch(PDO::FETCH_ASSOC)) { 
+                $id = $row['id'];
+                $visits = db_getData("
+                SELECT  id, SUM(aantal) as 'visits'
+                FROM    visites
+                WHERE `activiteit_id` = $id
+                GROUP   BY activiteit_id")->fetch(PDO::FETCH_ASSOC);
+                ?>
                 <tr class="align-middle">
                     <td><?php echo $row['activiteit_naam']; ?></td>
                     <td><?php echo $row['activiteit_locatie']; ?></td>
@@ -41,6 +49,7 @@ $activiteiten = db_getData($sql)
                     <td><?php echo $row['activiteit_benodigdheden']; ?></td>
                     <td><?php echo $row['activiteit_omschrijving']; ?></td>
                     <td><?php echo date("d-m-Y", strtotime($row['activiteit_datum'])) . ' ' . date("H:i", strtotime($row["activiteit_begin_tijd"])) . ' tot ' . date("H:i", strtotime($row["activiteit_begin_tijd"])); ?></td>
+                    <td><?php echo $visits != null ? $visits['visits'] : 0; ?></td>
                     <td class="bg-white">
                         <form method="post" action="activiteitenBewerk.php">
                             <input type="hidden" id="id" name="id" value="<?php echo $row['id'] ?>">
