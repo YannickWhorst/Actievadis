@@ -38,8 +38,8 @@ include "header.php";
                                 ? "<small><i>Geen opmerking</i></small>" 
                                 : $row["inschrijving_opmerking"]; ?></h5>
                 <p class="body rounded border p-2"><?php echo $activiteit["activiteit_omschrijving"]; ?></p>
-                <small class="text-muted">Begint op: <?php echo $activiteit["activiteit_begin_tijd"]; ?></small><br>
-                <small class="text-muted">Eindigt op: <?php echo $activiteit["activiteit_eindtijd"]; ?></small>
+                <small class="text-muted">Begint op: <?php echo date("H:i", strtotime($activiteit["activiteit_begin_tijd"])) ?></small><br>
+                <small class="text-muted">Eindigt op: <?php echo date("H:i", strtotime($activiteit["activiteit_eindtijd"])) ?></small>
             </div>
             </div>
             <form class="card-footer d-flex justify-content-between detailButtons" method="post" action="#">

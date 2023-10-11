@@ -19,6 +19,11 @@ if(isset($_POST['voeg'])) {
         $startTijd = $_POST["activiteit_begin_tijd"];
         $eindTijd = $_POST["activiteit_eindtijd"];
         
+        if($minDeelnemers > $maxDeelnemers)
+        {
+         ?> <h4 style="text-align: center; margin-top: 250px;">Maximale deelnemers is kleiner dan minimale deelnemers, <a href="activiteitenInvoeg.php">probeer opnieuw</a>!</div><?php
+            exit;
+        }
         // Voeg de gegevens toe aan de database
         $sql = "INSERT INTO `activiteit`(`activiteit_naam`, `activiteit_locatie`, `activiteit_eten`, `activiteit_max_deelnemers`, `activiteit_min_deelnemers`, `activiteit_kosten`, `activiteit_benodigdheden`, `activiteit_omschrijving`, `activiteit_datum`, `activiteit_begin_tijd`, `activiteit_eindtijd`, `activiteit_afbeelding`) 
         VALUES ('$naam', '$locatie', $eten, $maxDeelnemers, $minDeelnemers, '$kosten', '$benodigdheden', '$omschrijving', '$Datum' , '$startTijd' , '$eindTijd', '$afbeelding_naam')";
