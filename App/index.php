@@ -22,7 +22,9 @@
 
     if (isset($_POST['guest'])) {
         $naam = $_POST['name'];
+        $email = $_POST['email'];
         $_SESSION['guest'] = $naam;
+        $_SESSION['guest_email'] = $email;
         header("Location: activiteiten.php");
     }
 ?>
@@ -49,6 +51,10 @@
         <div class="form-floating mb-3 w-75">
             <input type="name" class="form-control" id="name" name="name" required placeholder="naam">
             <label for="name">Naam</label>
+        </div>
+        <div class="form-floating mb-3 w-75">
+            <input type="email" class="form-control" id="email" name="email" required placeholder="email">
+            <label for="email">Email</label>
         </div>
         <button type="submit" name="guest" class="inlog-btn mb-3 w-25">Inloggen</button>
     </form>
