@@ -26,3 +26,7 @@ header {
 .headerLink:hover {
     text-decoration: underline;
 }
+
+.btn:hover {
+    color: white;
+}

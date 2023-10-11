@@ -32,5 +32,18 @@
         <?php } } elseif (isset($_SESSION['guest'])) { ?>
         <a class="headerLink" href="mijnActiviteiten.php">Mijn activiteiten</a>
         <?php } ?>
+        <form action="#" method="POST">
+            <input type="submit" class="btn headerLink" value="Uitloggen" name="uitloggen">
+        </form>
     </header>
 </body>
+
+<?php
+    if(isset($_POST['uitloggen'])) {
+        if(isset($_SESSION['covadiaan'])){
+            $_SESSION['covadiaan'] = null;
+        } else if(isset($_SESSION['guest'])) {
+            $_SESSION['guest'] = null;
+        }
+    }
+?>
