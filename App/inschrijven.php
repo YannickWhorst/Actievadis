@@ -1,7 +1,7 @@
 <?php
     include "header.php";
 
-    if (!(isset($_SESSION['covadiaan']) && !isset($_SESSION['guest']))) {
+    if (!(isset($_SESSION['covadiaan']) || isset($_SESSION['guest']))) {
         header("Location: index.php");
         exit();
     }
@@ -44,6 +44,7 @@
         
         
         if(db_insertData($sql)) {
+            $_SESSION["ingeschreven"] = true;
             header("Location: activiteiten.php");
             exit();
         } else {

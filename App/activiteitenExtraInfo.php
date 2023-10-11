@@ -24,6 +24,11 @@
     $stmt = db_getData($sql);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     
+    if (!isset($_COOKIE["visitedActivity" . $id])) {
+        setcookie("visitedActivity" . $id, true, time()+600); // visit kan 1x worden toegevoegd aan database per 10 minuten
+        db_addVisit($id);
+    }
+
     $isIngeschreven = false;
     if (isset($_SESSION['covadiaan'])) {
         $covadiaanId = $_SESSION["covadiaan_id"];
