@@ -3,6 +3,17 @@
     
     include "./config/database_functions.php";
     include "./config/database_config.php";
+
+    if(isset($_POST['uitloggen'])) {
+        if(isset($_SESSION['covadiaan'])){
+            unset($_SESSION['covadiaan']);
+            unset($_SESSION['covadiaan_id']);
+            unset($_SESSION['rol_id']);
+        } else if(isset($_SESSION['guest'])) {
+            unset($_SESSION['guest']);
+            unset($_SESSION['guest_email']);
+        }
+    }
 ?>
 <head>
     <!-- bootstrap -->
@@ -19,8 +30,11 @@
         <?php
         if (!(isset($_SESSION['covadiaan']) || isset($_SESSION['guest']))) { ?>
         <a class="headerLink" href="index.php">Inloggen</a>
-        <?php } ?>
-        <?php
+        <?php } else { ?>
+            <form action="index.php" method="POST">
+                <input type="submit" class="btn headerLink" value="Uitloggen" name="uitloggen">
+            </form>
+        <?php }
         if (isset($_SESSION['covadiaan'])) {
         if ($_SESSION['rol_id'] == "2") { ?>
         <a class="headerLink" href="accountBeheer.php">Account beheer</a>
@@ -32,21 +46,5 @@
         <?php } } elseif (isset($_SESSION['guest'])) { ?>
         <a class="headerLink" href="mijnActiviteiten.php">Mijn activiteiten</a>
         <?php } ?>
-        <form action="#" method="POST">
-            <input type="submit" class="btn headerLink" value="Uitloggen" name="uitloggen">
-        </form>
     </header>
 </body>
-
-<?php
-    if(isset($_POST['uitloggen'])) {
-        if(isset($_SESSION['covadiaan'])){
-            unset($_SESSION['covadiaan']);
-            unset($_SESSION['covadiaan_id']);
-            unset($_SESSION['rol_id']);
-        } else if(isset($_SESSION['guest'])) {
-            unset($_SESSION['guest']);
-            unset($_SESSION['guest_email']);
-        }
-    }
-?>
