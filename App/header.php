@@ -31,7 +31,7 @@
         if (!(isset($_SESSION['covadiaan']) || isset($_SESSION['guest']))) { ?>
         <a class="headerLink" href="index.php">Inloggen</a>
         <?php } else { ?>
-            <form action="index.php" method="POST">
+            <form class="uitlog" action="index.php" method="POST">
                 <input type="submit" class="btn headerLink" value="Uitloggen" name="uitloggen">
             </form>
         <?php }
