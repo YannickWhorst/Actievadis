@@ -43,7 +43,7 @@ include "header.php";
             </div>
             </div>
             <form class="card-footer d-flex justify-content-between detailButtons" method="post" action="#">
-                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                <input type="hidden" name="id" value="<?php echo $_SESSION['covadiaan_id']; ?>">
                 <input class="btn btn-primary btn-block btn-warning" type="submit" name="uitschrijven" value="Uitschrijven">
             </form>
         </div>
