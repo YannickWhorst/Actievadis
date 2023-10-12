@@ -36,8 +36,9 @@
                 <td><?php echo $row['covadiaan_email']; ?></td>
                 <td><?php echo $row['covadiaan_wachtwoord']; ?></td>
                 <td><?php echo $row['covadiaan_rol_id']; ?></td>
-                <td class="d-flex gap-3">
+                <td class="<?php echo $row['id'] != $_SESSION['covadiaan_id'] ? 'd-flex gap-3' : ''; ?>">
 
+                <?php if ($row['id'] != $_SESSION['covadiaan_id']) { ?>
                 <form method="post" action="accountBewerk.php"> 
                   <input type="hidden" id="id" name="id" value="<?php echo $row['id'] ?>">    
                   <button type="submit" name="bewerk" class="btn btn-warning">Bewerk</button>
@@ -47,6 +48,7 @@
                   <input type="hidden" id="id" name="id" value="<?php echo $row['id'] ?>">    
                   <button type="submit" name="verwijder" class="btn btn-danger">Verwijder</button>
                 </form>
+                <?php } ?>
                 
                 </td>
                 
