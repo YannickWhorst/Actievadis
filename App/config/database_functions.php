@@ -60,6 +60,26 @@
         }
     }
 
+    function db_addVisit($activiteitId) {
+        if (isset($_SESSION['covadiaan'])) {
+            $covadiaanId = $_SESSION['covadiaan_id'];
+            $visitedBefore = db_getData("SELECT * FROM visites WHERE `covadiaan_id` = $covadiaanId AND `activiteit_id` = $activiteitId")->fetch(PDO::FETCH_ASSOC);
+            if ($visitedBefore != null) {
+                db_insertData("UPDATE visites SET `aantal` = `aantal` + 1 WHERE 'covadiaan_id' = $covadiaanId AND `activiteit_id` = $activiteitId");
+            } else {
+                db_insertData("INSERT INTO visites (covadiaan_id, activiteit_id, aantal) VALUES ($covadiaanId, $activiteitId, 1)");
+            }
+        } else {
+            $guestName = $_SESSION['guest'];
+            $visitedBefore = db_getData("SELECT * FROM visites WHERE `gast_naam` = '$guestName' AND `activiteit_id` = $activiteitId")->fetch(PDO::FETCH_ASSOC);
+            if ($visitedBefore != null) {
+                db_insertData("UPDATE visites SET `aantal` = `aantal` + 1 WHERE `gast_naam` = '$guestName' AND `activiteit_id` = $activiteitId");
+            } else {
+                db_insertData("INSERT INTO visites (gast_naam, activiteit_id, aantal) VALUES ('$guestName', $activiteitId, 1)");
+            }
+        }
+    }
+
     // Database informatie in de database stoppen 
     function db_insertData($query) {
         try{

@@ -18,6 +18,11 @@
 <body>
 
 <?php
+    if (isset($_SESSION["ingeschreven"])) {
+        unset($_SESSION["ingeschreven"]);
+        echo "<script>alert('Succesvol ingeschreven!')</script>";
+    }
+    
     $sql = "SELECT id, activiteit_afbeelding, activiteit_naam, activiteit_locatie, activiteit_kosten, activiteit_datum 
             FROM activiteit 
             WHERE activiteit_datum > CURRENT_TIMESTAMP
