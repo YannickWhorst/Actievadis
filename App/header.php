@@ -32,7 +32,7 @@
         <?php } } elseif (isset($_SESSION['guest'])) { ?>
         <a class="headerLink" href="mijnActiviteiten.php">Mijn activiteiten</a>
         <?php } ?>
-        <form action="#" method="POST">
+        <form class="uitlog" action="#" method="POST">
             <input type="submit" class="btn headerLink" value="Uitloggen" name="uitloggen">
         </form>
     </header>

@@ -30,3 +30,7 @@ header {
 .btn:hover {
     color: white;
 }
+
+.uitlog {
+    margin-bottom: -1px;
+}
