@@ -41,6 +41,23 @@
         }
     }
 
+    function db_deleteInschrijvingen($activiteit_id, $tabel) {
+        try {
+            $db = db_connect();
+            $queryPDO = $db->prepare("DELETE FROM $tabel WHERE activiteit_id = :id");
+            $queryPDO->bindParam(':id', $activiteit_id, PDO::PARAM_INT);
+
+            if($queryPDO->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch(PDOException $e) {
+            //die("Error: " . $e-getMessage());
+            return false;
+        }
+    }
+
     function db_uitschrijven($id) {
         try {
             $db = db_connect();
