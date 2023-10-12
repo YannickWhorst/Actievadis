@@ -2,7 +2,7 @@
 include "header.php";
 
 $sql = "SELECT * FROM activiteit";
-$activiteiten = db_getData($sql)
+$activiteiten = db_getData($sql);
 ?>
 
 <head>
@@ -31,7 +31,6 @@ $activiteiten = db_getData($sql)
         </thead>
         <tbody>
             <?php
-            // Hieronder veronderstel ik dat je een query hebt uitgevoerd om activiteitsgegevens op te halen
             while ($row = $activiteiten->fetch(PDO::FETCH_ASSOC)) { 
                 $id = $row['id'];
                 $visits = db_getData("
@@ -69,6 +68,7 @@ $activiteiten = db_getData($sql)
     if (isset($_POST['verwijder'])) {
         $id = $_POST['id'];
         if (db_deleteData($id, "activiteit")) {
+            db_deleteInschrijvingen($id);
             // Als de verwijdering succesvol is, toon dan een JavaScript pop-upmelding en vernieuw de pagina
             echo '<script>alert("Activiteit is succesvol verwijderd."); window.location.href = window.location.href;</script>';
         } else {
