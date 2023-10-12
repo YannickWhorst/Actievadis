@@ -71,31 +71,13 @@
         <?php } else { ?>
             <p class="tekst fs-3">Je bent ingeschreven</p>
             <form class="card-footer d-flex justify-content-between detailButtons" method="post" action="#">
-                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                <input type="hidden" name="id" value="<?php echo $_SESSION["covadiaan_id"]; ?>">
                 <input class="btn btn-primary btn-block btn-warning" type="submit" name="uitschrijven" value="Uitschrijven">
             </form>
             <?php
     if(isset($_POST['uitschrijven'])) {
-
-        function db_uitschrijven($id) {
-            try {
-                $db = db_connect();
-                $queryPDO = $db->prepare("DELETE FROM inschrijving WHERE id = :id");
-                $queryPDO->bindParam(':id', $id, PDO::PARAM_INT);
-    
-                if($queryPDO->execute()) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } catch(PDOException $e) {
-             //   die("Error: " . $e-getMessage());
-                return false;
-            }
-        }
-        
         if(db_uitschrijven($_POST["id"])) {
-            header("Location: activiteiten.php");
+            // header("Location: activiteiten.php");
         }
     }
  } ?>

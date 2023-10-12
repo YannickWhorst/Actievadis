@@ -44,8 +44,10 @@
     function db_uitschrijven($id) {
         try {
             $db = db_connect();
-            $queryPDO = $db->prepare("DELETE FROM inschrijving WHERE id = :id");
-            $queryPDO->bindParam(':id', $id, PDO::PARAM_INT);
+            $queryPDO = $db->prepare("DELETE FROM inschrijving WHERE covadiaan_id = :id");
+             $queryPDO->bindParam(':id', $id, PDO::PARAM_INT);
+
+            print_r( $queryPDO);
 
             if($queryPDO->execute()) {
                 return true;
@@ -53,7 +55,7 @@
                 return false;
             }
         } catch(PDOException $e) {
-            die("Error: " . $e-getMessage());
+            die("Error: " . $e->getMessage());
             return false;
         }
     }
