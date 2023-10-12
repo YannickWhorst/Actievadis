@@ -41,10 +41,10 @@
         }
     }
 
-    function db_deleteInschrijvingen($activiteit_id, $tabel) {
+    function db_deleteInschrijvingen($activiteit_id) {
         try {
             $db = db_connect();
-            $queryPDO = $db->prepare("DELETE FROM $tabel WHERE activiteit_id = :id");
+            $queryPDO = $db->prepare("DELETE FROM inschrijving WHERE activiteit_id = :id");
             $queryPDO->bindParam(':id', $activiteit_id, PDO::PARAM_INT);
 
             if($queryPDO->execute()) {
