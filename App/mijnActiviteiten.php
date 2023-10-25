@@ -43,7 +43,12 @@ include "header.php";
             </div>
             </div>
             <form class="card-footer d-flex justify-content-between detailButtons" method="post" action="#">
-                <input type="hidden" name="id" value="<?php echo $_SESSION['covadiaan_id']; ?>">
+                <?php if(isset($_SESSION['covadiaan_id'])) {?>
+                    <input type="hidden" name="id" value="<?php echo $_SESSION['covadiaan_id']; 
+                } else {?>
+                    <input type="hidden" name="id" value="<?php echo $_SESSION['guest']; 
+                } ?>">
+                <input type="hidden" name="activiteit_id" value="<?php echo $activiteit["id"]; ?>">
                 <input class="btn btn-primary btn-block btn-warning" type="submit" name="uitschrijven" value="Uitschrijven">
             </form>
         </div>
@@ -53,8 +58,14 @@ include "header.php";
 
 <?php
     if(isset($_POST['uitschrijven'])) {
-        if(db_uitschrijven($_POST["id"])) {
-            header("Location: mijnActiviteiten.php");
+        if(isset($_SESSION["guest"])) {
+            if(db_uitschrijvenGast($_POST["id"], $_POST["activiteit_id"])) {
+                header("Location: mijnActiviteiten.php");
+            }
+        } else {
+            if(db_uitschrijven($_POST["id"], $_POST["activiteit_id"])) {
+                header("Location: mijnActiviteiten.php");
+            }
         }
     }
     

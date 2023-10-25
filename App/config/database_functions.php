@@ -58,13 +58,30 @@
         }
     }
 
-    function db_uitschrijven($id) {
+    function db_uitschrijven($id, $activiteit_id) {
         try {
             $db = db_connect();
-            $queryPDO = $db->prepare("DELETE FROM inschrijving WHERE covadiaan_id = :id");
-             $queryPDO->bindParam(':id', $id, PDO::PARAM_INT);
+            $queryPDO = $db->prepare("DELETE FROM inschrijving WHERE covadiaan_id = :id AND activiteit_id = :activiteit_id");
+            $queryPDO->bindParam(':id', $id, PDO::PARAM_INT);
+            $queryPDO->bindParam(':activiteit_id', $activiteit_id, PDO::PARAM_INT);
 
-            print_r( $queryPDO);
+            if($queryPDO->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch(PDOException $e) {
+            die("Error: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    function db_uitschrijvenGast($gast_naam, $activiteit_id) {
+        try {
+            $db = db_connect();
+            $queryPDO = $db->prepare("DELETE FROM inschrijving WHERE gast_naam = :gast_naam AND activiteit_id = :activiteit_id");
+            $queryPDO->bindParam(':gast_naam', $gast_naam, PDO::PARAM_STR);
+            $queryPDO->bindParam(':activiteit_id', $activiteit_id, PDO::PARAM_INT);
 
             if($queryPDO->execute()) {
                 return true;

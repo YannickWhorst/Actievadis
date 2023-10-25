@@ -60,12 +60,12 @@ if(isset($_POST['voeg'])) {
                 <label class="form-check-label" for="eten">Eten</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="maxDeelnemers" name="maxDeelnemers" placeholder="1" required>
-                <label for="maxDeelnemers">Maximale deelnemers *</label>
-            </div>
-            <div class="form-floating mb-3">
                 <input type="number" class="form-control" id="minDeelnemers" name="minDeelnemers" placeholder="1" required>
                 <label for="minDeelnemers">Minimale deelnemers *</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="maxDeelnemers" name="maxDeelnemers" placeholder="1" required>
+                <label for="maxDeelnemers">Maximale deelnemers *</label>
             </div>
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="kosten" name="kosten" placeholder="Kosten" required>
